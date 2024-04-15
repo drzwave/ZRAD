@@ -2,18 +2,22 @@
 
 Z-Wave USB Controller with best-in-class RF range Reference Application Design
 
+More to come here...
+
 # Setup - Simplicity Studio GDSK 4.4.2 (Z-Wave 7.21.2)
 
-This setup guide assumes a ZRAD PCB has been assembled and is ready for programming.
-ZRAD can be programmed as either a Controller or and End Device.
+This setup guide assumes a ZRAD board has been assembled and is ready for programming.
+ZRAD can be programmed as either a Controller or an End Device.
 ZRAD uses the Silicon Labs EFR32ZG23A Z-Wave chip as the Z-Wave interface.
 The challenge with Simplicity Studio (SSv5) is that since this is a "custom" board, many of the automatic features of SSv5 do not work.
-Many aspects of the sample applications must be manually configured to get the board to work.
+Many aspects of the sample applications must be manually configured.
+
+## Connect ZRAD to Simplicity Studio
 
 1. Plug ZRAD into a WSTK via the Tag-Connect cable
     - ZRAD can be powered directly from the WSTK - ensure the switch next to the battery holder is set to AEM
-    - Use a Tag-Connect TC2050-CLIP retaining clip to hold the Tag-Connect securely to ZRAD
-2. Plug the WSTK into a PC
+    - Use a Tag-Connect [TC2050-CLIP](https://www.tag-connect.com/product/tc2050-clip-3pack-retaining-clip) retaining clip to hold the Tag-Connect securely to ZRAD
+2. Plug the WSTK into a computer running Simplicity Studio
 3. The WSTK should show up in the Debug Adapters pane of the Launcher Perspective
     - if not, click on detect target, if that still doesn't work, use Commander to identify the part part
     - if that still doesn't work, check that the WSTK is set to OUT (or Mini) mode
@@ -23,6 +27,7 @@ Many aspects of the sample applications must be manually configured to get the b
 
 1. Build the bootloader - 
     - more to come here
+
 ## End Device
 
 1. Build the Bootloader
@@ -56,7 +61,7 @@ Many aspects of the sample applications must be manually configured to get the b
         - If the build fails because USART is undefined, click on Configure in IO Stream USART
         - Click on View Source
             - if #warning "IO Stream USART peripheral is not configured" is at about line 90, then SSv5 didn't properly configure the USART
-            - comment out the #warning line, then manually set the following several lines with the proper values (they are pretty obvious)
+            - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
     - Edit app.c and uncomment the line: #define DEBUGPRINT
 6. Build the project - it should build OK
 7. Configure buttons and LEDs
@@ -87,6 +92,27 @@ Many aspects of the sample applications must be manually configured to get the b
 #endif
 ```
 8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
+
+# QWIIC Connector Setup
+
+The QWIIC connector on ZRAD makes it easy to connect any of the SparkFun sensors or other devices via a standard I2C interface. 
+Fortunately SSv5 is able to add the I2CSPM component which makes adding and interfacing to I2C devices fairly easy.
+The QWIIC connector is normally only used when implementing ZRAD as an End Device.
+
+## I2CSPM Setup
+
+1. Click on the .slcp file - select the Software Components tab - enter I2CSPM into the seach bar
+2. Click on Platform-\>Driver-\>I2C-\>I2CSPM and Install it
+3. Name the component QWIIC
+4. Click on Configure
+5. Reference clock frequency=0 (default), Speed mode=Fast mode (400kbit/s), Selected Module=I2C0 (or I2C1), SCL=PB00, SDA=PB02
+    - Sometimes SSv5 does not properly configure the GPIOs - click on Source
+    - Comment out the #warning
+    - Uncomment the QWIIC\_PERIPHERAL to be I2C0 (or I2C1)
+    - Uncomment the PORT and PIN lines and set them to the correct GPIOs for both SCL and SDA
+6. The project should build OK - the I2C peripheral will be automatically initialized
+7. The I2CSPM\_Transfer() function is then used to send/receive data over the I2C bus
+8. See the Geographic Location Command Class repo for an example using the QWIIC connector
 
 # Directory Structure
 
