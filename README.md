@@ -56,7 +56,7 @@ Many aspects of the sample applications must be manually configured.
     - SSv5 should also instal the IO Stream USART but sometimes it does not
         - manually install Services-\>IO Stream-\>IO Stream USART
         - Click on configure
-        - Choose USART0, Tx=PA09, RX=PA08
+        - Choose USART0, Tx=PA08, RX=PA09
         - Build the project
         - If the build fails because USART is undefined, click on Configure in IO Stream USART
         - Click on View Source
@@ -64,15 +64,24 @@ Many aspects of the sample applications must be manually configured.
             - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
     - Edit app.c and uncomment the line: #define DEBUGPRINT
 6. Build the project - it should build OK
+    - If the build fails because APP\_BUTTON\_A or APP\_LED\_A is not defined:
+        - From the IDE perspective, right click the project then at the bottom select Properties
+        - Open C/C++ Build, then Settings
+        - Open GNU ARM C Compiler then Preprocessor
+        - scroll down to find the RADIO_BOARD_EFR32ZG23=1 and delete it
+        - Then in GNU ARM Assembler Symbols, find it again and delete it
+        - Sometimes this setting comes back after configuring other things in the SLCP and may need to be deleted again
+        - The project should then build OK
 7. Configure buttons and LEDs
     - The project built so far won't run. It will enter Default\_Handler because LEDs/buttons are not setup
 7. Click on the .slcp file and select the Software Components then scroll down to Z-Wave Boards and click on the gear icon
 7. Set Button1 On value=Active low, Button2 On Value Active low, Button2 Wake up from EM4 to ON (blue)
 7. Scroll down to PB1\_GPIO=PC03, PB2\_GPIO=PC05 and name it LEARN - leave the rest at their defaults
 7. Set LED1, LED2 and LED3 ON value = Active Low
-7. Set LED1\_GPIO=PA00 name=GREEN, LED2\_GPIO=PA10 name=BLUE, LED3\GPIO=PC04 name=RED
+7. Set LED1\_GPIO=PA00 name=GREEN, LED2\_GPIO=PA10 name=BLUE, LED3\_GPIO=PC04 name=RED
     - Open the source files and check they are configured properly - sometimes SSv5 fails to configure them:
     - radio\_no\_board\_led.c - assign all 3 LEDs in a similar fashion
+
 ```
 #define LED1_LABEL           "LED0"
 #ifndef LED1_GPIO_PORT                          
@@ -82,7 +91,9 @@ Many aspects of the sample applications must be manually configured.
 #define LED1_GPIO_PIN                            0
 #endif
 ```
+
     - radio\_no\_board\_button.c
+
 ```
 #ifndef PB2_GPIO_PORT                           
 #define PB2_GPIO_PORT                            gpioPortC
@@ -91,6 +102,7 @@ Many aspects of the sample applications must be manually configured.
 #define PB2_GPIO_PIN                             5
 #endif
 ```
+
 8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
 
 # QWIIC Connector Setup
@@ -114,12 +126,54 @@ The QWIIC connector is normally only used when implementing ZRAD as an End Devic
 7. The I2CSPM\_Transfer() function is then used to send/receive data over the I2C bus
 8. See the Geographic Location Command Class repo for an example using the QWIIC connector
 
+# Railtest
+
+RailTest is required for calibrating the 39MHz crystal on the ZRAD PCB.
+
+## Build Railtest
+
+1. The easiest method is to select a ZG23 Radio board DevKit in the MyProducts in the Launcher persepctive
+    - ZRAD uses the same UART IOs as the devkits thus the simple method to build railtest is to use one
+    - In the "Enter product name" box, enter "RB4210"
+2. In the Example Projects & Demos tab, enter "railtest" in the "Filter on Keywords" box
+2. Select the "RAIL - SoC Railtest" project
+3. Click on Create
+4. Build the project
+5. Download the .s37 file to the target
+6. Connect via USB using PuTTY, Minicom or other terminal project at 115200 baud
+7. Type "help" and the full railtest menu should print out
+8. Type "getversion" to see the current version of Rail
+
+# Crystal Calibration
+
+1.	Download RailTest into the DUT
+2.	Rx 0
+3.	Setzwavemode 1 3
+4.	Setzwaveregion 1
+5.	Setchannel 2
+6.	Settxtone 1 - turns on the radio carrier
+7.	Getctune - record the CTUNEXIANA value in hex
+8.	Use a spectrum analyzer like the TinySA Ultra with start=908.3 stop=908.6
+9.	Measure the peak which the TinySA should display - goal is to be within 1ppm of 908.420MHz (1000Hz)
+10.	If the peak is high, set ctune to be a higher value, if low, try a lower value
+11.	Settxtone 0
+12.	Rx 0
+13.	Setctune 0xTTT
+14.	Settxtone 1
+15.	Measure the peak - go back to step 11 until within 1000Hz
+
+Once the value has been determined, use the following command to program the value:
+```commander ctune set --value <ctunevalue> -d EFR32ZG23```
+
+Note that railtest can NOT program the value in NVM. Railtest will only TEMPORARILY assign the CTUNE value. Commander must be used to program the value permanently.
+
 # Directory Structure
 
 - docs - documentation folder
     - Datasheet
     - Technical reference manual and theory of operation
 - hardware - PCB board design, bill of materials, Gerbers, KiCAD schematic and layout
+- softare - various hex files for quick testing purposes
 - Test - Documents and scripts for testing
 
 # Reference Documents
