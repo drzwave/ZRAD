@@ -5,9 +5,9 @@
 	(uuid "ba492aef-b6eb-4439-8867-b040ec48a543")
 	(paper "A")
 	(title_block
-		(title "ZReach Z-Wave Controller Reference Design")
-		(date "2024-02-16")
-		(rev "B")
+		(title "ZRAD Z-Wave  Reference Application Design")
+		(date "2024-05-13")
+		(rev "C")
 		(company "Z-Wave Alliance")
 	)
 	(lib_symbols
@@ -5736,7 +5736,7 @@
 				)
 			)
 		)
-		(symbol "ZReach:Qwiic_Right_Angle"
+		(symbol "ZRAD:Qwiic_Right_Angle"
 			(pin_names
 				(offset 1.016) hide)
 			(exclude_from_sim no)
@@ -10254,7 +10254,7 @@
 			(uuid "64459399-2e14-4f1c-9ea2-0bee5f1e8dc6")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0103")
 					(unit 1)
@@ -10323,7 +10323,7 @@
 			(uuid "d99825ea-ed9d-4e06-801b-74f6ae31f8bf")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C11")
 					(unit 1)
@@ -10396,7 +10396,7 @@
 			(uuid "723fe62b-c080-446b-b310-2d60faadf1b0")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "Y2")
 					(unit 1)
@@ -10463,7 +10463,7 @@
 			(uuid "6fd41a3e-57a2-4324-a72e-65c2214e69a1")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0101")
 					(unit 1)
@@ -10529,7 +10529,7 @@
 			(uuid "83864891-03d7-41aa-a4c1-38c821059d43")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0125")
 					(unit 1)
@@ -10595,7 +10595,7 @@
 			(uuid "d7bdadea-d70b-4dc0-b3ae-ce94825b0173")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0119")
 					(unit 1)
@@ -10664,7 +10664,7 @@
 			(uuid "21ac8b5b-025f-4c41-b1d9-b0ac6a6cd549")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L1")
 					(unit 1)
@@ -10729,7 +10729,7 @@
 			(uuid "bec08444-c93a-4150-b52d-2c3da7c54da2")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0141")
 					(unit 1)
@@ -10795,7 +10795,7 @@
 			(uuid "38a0f873-2881-47e4-8865-d14cd5f22424")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0109")
 					(unit 1)
@@ -10908,7 +10908,7 @@
 			(uuid "4a74561a-ea16-4aa9-9cbc-95d86504a8bd")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J8")
 					(unit 1)
@@ -10975,7 +10975,7 @@
 			(uuid "2813482c-23bb-4f32-a42a-4cd9859e2d32")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0106")
 					(unit 1)
@@ -11114,7 +11114,7 @@
 			(uuid "d48977db-4ea6-441a-abaf-abe6052582bb")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "U3")
 					(unit 1)
@@ -11183,7 +11183,7 @@
 			(uuid "9ac79b72-0f87-4a45-be09-b198f26a1b8a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J6")
 					(unit 1)
@@ -11249,7 +11249,7 @@
 			(uuid "03a24ea9-f3a6-44ac-a678-90980012f3d2")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0118")
 					(unit 1)
@@ -11316,7 +11316,7 @@
 			(uuid "9f6f14b6-d949-47fb-94e1-07bfbfd8f241")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0102")
 					(unit 1)
@@ -11382,7 +11382,7 @@
 			(uuid "0dda1c1a-1ef9-46b7-8a5f-004d5443eb3b")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0142")
 					(unit 1)
@@ -11448,7 +11448,7 @@
 			(uuid "11dc3beb-c861-410f-aff3-b34398ccfeb7")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0138")
 					(unit 1)
@@ -11517,7 +11517,7 @@
 			(uuid "d6f4d7c5-e9d7-4a92-86e3-c858b3627f5a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C1")
 					(unit 1)
@@ -11584,7 +11584,7 @@
 			(uuid "5b00d0ba-ce60-427b-ba7f-499f34502997")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L7")
 					(unit 1)
@@ -11651,7 +11651,7 @@
 			(uuid "88144b02-a6cb-4c23-a79f-76f403d4aa4b")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R2")
 					(unit 1)
@@ -11718,7 +11718,7 @@
 			(uuid "5c5f7be0-b4bb-4510-ac27-ea2d9b1b969a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0110")
 					(unit 1)
@@ -11784,7 +11784,7 @@
 			(uuid "d1b6e0e9-32e2-4479-8982-6dd9044f48f3")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0128")
 					(unit 1)
@@ -11853,7 +11853,7 @@
 			(uuid "db60bc8f-71d0-450b-8a2d-46b5dbf3d587")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C5")
 					(unit 1)
@@ -11930,7 +11930,7 @@
 			(uuid "ff04e707-8fcb-4756-8580-390e56c5a1d7")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "U2")
 					(unit 1)
@@ -11997,7 +11997,7 @@
 			(uuid "a8b0e3be-e40f-4f1c-813f-83803481d4da")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R1")
 					(unit 1)
@@ -12063,7 +12063,7 @@
 			(uuid "c385ed32-e16f-40f9-a037-e5a782e02f2c")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0132")
 					(unit 1)
@@ -12130,7 +12130,7 @@
 			(uuid "884629be-5b31-4520-801c-b72a2f8b6a09")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0117")
 					(unit 1)
@@ -12197,7 +12197,7 @@
 			(uuid "8831f924-aa36-429a-9b92-df81ba3940fd")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0127")
 					(unit 1)
@@ -12264,7 +12264,7 @@
 			(uuid "e7c6200b-bab9-4637-8de1-78a07f6e720f")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0113")
 					(unit 1)
@@ -12331,7 +12331,7 @@
 			(uuid "91614261-deb5-4885-a2f5-cf30be790996")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0134")
 					(unit 1)
@@ -12398,7 +12398,7 @@
 			(uuid "48bf1076-2486-44c3-a1fa-299df543b0fb")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0123")
 					(unit 1)
@@ -12463,7 +12463,7 @@
 			(uuid "3823fdcb-9def-4369-ab2e-ec5456dff215")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0139")
 					(unit 1)
@@ -12529,7 +12529,7 @@
 			(uuid "7f063df1-624d-4077-8f48-427af49bcd53")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0126")
 					(unit 1)
@@ -12596,7 +12596,7 @@
 			(uuid "52366f70-a595-4839-8075-63679397959d")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J2")
 					(unit 1)
@@ -12670,7 +12670,7 @@
 			(uuid "55f42ad6-57ad-44d0-9be3-d31c50e30e64")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "D1")
 					(unit 1)
@@ -12736,7 +12736,7 @@
 			(uuid "f9284eb3-927f-4a2e-a16d-dfd187d53c72")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0108")
 					(unit 1)
@@ -12805,7 +12805,7 @@
 			(uuid "a2118a8c-20f8-468d-9b72-3ba94e9774c8")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C10")
 					(unit 1)
@@ -12874,7 +12874,7 @@
 			(uuid "d8504936-b76a-4a08-aaf1-a440141b4985")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C18")
 					(unit 1)
@@ -12939,7 +12939,7 @@
 			(uuid "b8ef66d2-0d21-40f2-86c5-7f91fe5ae3d1")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0140")
 					(unit 1)
@@ -13004,7 +13004,7 @@
 			(uuid "4887bd13-efb6-447e-a45d-bbb87f9db852")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0101")
 					(unit 1)
@@ -13071,7 +13071,7 @@
 			(uuid "d8d065b0-05ba-453e-9026-c2658d6e54ab")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L6")
 					(unit 1)
@@ -13291,7 +13291,7 @@
 			(uuid "d6db9210-5a1b-46a5-979d-42e62cc9153a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "U1")
 					(unit 1)
@@ -13357,7 +13357,7 @@
 			(uuid "a878360b-e0e8-4f7b-9092-2ed82cd44c10")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0133")
 					(unit 1)
@@ -13424,7 +13424,7 @@
 			(uuid "ed1e6da4-3532-489c-8b0f-ac2d5ded8e30")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C7")
 					(unit 1)
@@ -13490,7 +13490,7 @@
 			(uuid "e64c4b57-9bf6-49fa-94d9-a810d772d539")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0131")
 					(unit 1)
@@ -13559,7 +13559,7 @@
 			(uuid "e4739f10-0317-47af-9f64-2c52f62c5ffa")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C16")
 					(unit 1)
@@ -13625,7 +13625,7 @@
 			(uuid "1202d883-a5df-4a77-8bb2-211ef587e6f6")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0116")
 					(unit 1)
@@ -13691,7 +13691,7 @@
 			(uuid "0f9cfd10-1d45-486c-9e84-359b138149fe")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0104")
 					(unit 1)
@@ -13756,7 +13756,7 @@
 			(uuid "6a78532f-5faf-40bc-9a6a-7f3a2d08e357")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0106")
 					(unit 1)
@@ -13822,7 +13822,7 @@
 			(uuid "fa4b6cc9-5411-45ee-9928-efa2177f00ac")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0130")
 					(unit 1)
@@ -13888,7 +13888,7 @@
 			(uuid "850bae73-80fe-4830-b29f-6a95266b3116")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0111")
 					(unit 1)
@@ -13956,7 +13956,7 @@
 			(uuid "c0e225ea-d0a4-4035-ac9f-b639120b20c6")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "Y1")
 					(unit 1)
@@ -14047,7 +14047,7 @@
 			(uuid "253161f3-f372-44e7-b979-621babd137cc")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J3")
 					(unit 1)
@@ -14113,7 +14113,7 @@
 			(uuid "7830f4dc-8e39-4e7d-8843-8c0b32ae5458")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0107")
 					(unit 1)
@@ -14180,7 +14180,7 @@
 			(uuid "00a10ddd-175d-4db2-b8c9-011937c5587d")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L2")
 					(unit 1)
@@ -14247,7 +14247,7 @@
 			(uuid "3fc67888-b522-4003-85cf-30bd92039c41")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#e0101")
 					(unit 1)
@@ -14316,7 +14316,7 @@
 			(uuid "0a477494-6505-44f5-8bdf-e7fcb2628d5b")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C12")
 					(unit 1)
@@ -14385,7 +14385,7 @@
 			(uuid "ba7d7dd4-5cf1-4daa-9004-17f04deced13")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C8")
 					(unit 1)
@@ -14451,7 +14451,7 @@
 			(uuid "263e0a55-1b7c-4715-885c-1356aa158aac")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0136")
 					(unit 1)
@@ -14517,7 +14517,7 @@
 			(uuid "6d3cb38b-da07-423d-a0b6-0bad00b7854c")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0115")
 					(unit 1)
@@ -14583,7 +14583,7 @@
 			(uuid "17626718-2bb2-414f-b6ae-d8a6587969d6")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0135")
 					(unit 1)
@@ -14650,7 +14650,7 @@
 			(uuid "82ddf74f-2dbc-48a3-9c98-3f1fa801cf39")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C4")
 					(unit 1)
@@ -14720,7 +14720,7 @@
 			(uuid "8149be29-ad19-4d8b-a53a-06aba9c2f490")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C6")
 					(unit 1)
@@ -14789,7 +14789,7 @@
 			(uuid "c69065f2-bf87-4559-b1b3-402d934c4fe0")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L5")
 					(unit 1)
@@ -14858,7 +14858,7 @@
 			(uuid "51a965cb-f5a0-41a9-a681-4022cd3db4e0")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "SW1")
 					(unit 1)
@@ -14925,7 +14925,7 @@
 			(uuid "377f4d2e-7fcf-490a-ad56-fdc96a209596")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0129")
 					(unit 1)
@@ -14991,7 +14991,7 @@
 			(uuid "f98c6d9a-df51-4e11-a2ed-717c41a81b7a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0121")
 					(unit 1)
@@ -15057,7 +15057,7 @@
 			(uuid "ee504834-939c-43de-bf34-96c817710ec8")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0122")
 					(unit 1)
@@ -15124,7 +15124,7 @@
 			(uuid "58f5f02d-b126-4c40-b811-790528e8c2f8")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R3")
 					(unit 1)
@@ -15191,7 +15191,7 @@
 			(uuid "33799328-c5b9-444c-a760-da2dd369f0b4")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0105")
 					(unit 1)
@@ -15258,7 +15258,7 @@
 			(uuid "827d3353-57af-4900-a0fc-26c7b0cdaddb")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R7")
 					(unit 1)
@@ -15334,7 +15334,7 @@
 			(uuid "4eee41b7-fbfd-4268-ac11-58d230823502")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "D2")
 					(unit 1)
@@ -15399,7 +15399,7 @@
 			(uuid "50ae35b5-36dd-429b-a009-9b8b99bc2b5f")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0107")
 					(unit 1)
@@ -15466,7 +15466,7 @@
 			(uuid "4e5ec3bd-460f-45a8-a667-03b8eb814ff0")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R4")
 					(unit 1)
@@ -15536,7 +15536,7 @@
 			(uuid "25f1fd18-25b1-4544-8c2f-a64b08d7a075")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "BT1")
 					(unit 1)
@@ -15605,7 +15605,7 @@
 			(uuid "0e22a40d-8a5c-4345-982d-685e2b7e6c5d")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C3")
 					(unit 1)
@@ -15672,7 +15672,7 @@
 			(uuid "cec7e06b-c116-43ce-ae98-974d23b62ffc")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L3")
 					(unit 1)
@@ -15681,7 +15681,7 @@
 		)
 	)
 	(symbol
-		(lib_id "ZReach:Qwiic_Right_Angle")
+		(lib_id "ZRAD:Qwiic_Right_Angle")
 		(at 116.84 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15707,7 +15707,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+		(property "Footprint" "ZReach:JST_PTH-4"
 			(at 116.84 198.12 0)
 			(effects
 				(font
@@ -15725,7 +15725,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4 pin JST 1mm polarized connector for I2C"
 			(at 116.84 185.42 0)
 			(effects
 				(font
@@ -15756,7 +15756,7 @@
 			(uuid "da3b9006-b06a-415e-9700-c8f4a8ce41e5")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J1")
 					(unit 1)
@@ -15823,7 +15823,7 @@
 			(uuid "955aacf9-cc90-4075-bb4c-8da70270437b")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C9")
 					(unit 1)
@@ -15890,7 +15890,7 @@
 			(uuid "e0b6031c-b22e-42bb-a0ff-a9279eed1348")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L4")
 					(unit 1)
@@ -15956,7 +15956,7 @@
 			(uuid "fe430914-f7c6-4b58-b44d-a384f047cfae")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0102")
 					(unit 1)
@@ -16025,7 +16025,7 @@
 			(uuid "0a0a7273-30e6-4911-9fae-19581275af66")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C2")
 					(unit 1)
@@ -16104,7 +16104,7 @@
 			(uuid "29d721e3-d9bf-4a1a-b74c-aba6dcc5ce1d")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J5")
 					(unit 1)
@@ -16171,7 +16171,7 @@
 			(uuid "166dc904-5d60-4802-8cf2-45cc4cbdbe72")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0120")
 					(unit 1)
@@ -16249,7 +16249,7 @@
 			(uuid "51e1bdf9-7228-4273-a503-9297c13ae9e3")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J7")
 					(unit 1)
@@ -16316,7 +16316,7 @@
 			(uuid "b7b67382-3278-4a45-a98f-f92a74829340")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R8")
 					(unit 1)
@@ -16385,7 +16385,7 @@
 			(uuid "ea9f0052-b698-4f56-abde-1c2b78301d8b")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C15")
 					(unit 1)
@@ -16452,7 +16452,7 @@
 			(uuid "232004af-27a9-45bd-95c8-7fe01d1a3293")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R9")
 					(unit 1)
@@ -16519,7 +16519,7 @@
 			(uuid "6aa3ce23-60f6-4777-88d7-3815bbdc0033")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0124")
 					(unit 1)
@@ -16586,7 +16586,7 @@
 			(uuid "b86ad0ac-2828-497e-8cc4-d9740312303c")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R5")
 					(unit 1)
@@ -16656,7 +16656,7 @@
 			(uuid "59acb585-47ad-4cbb-8339-5c43e2dfa9ff")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "J4")
 					(unit 1)
@@ -16723,7 +16723,7 @@
 			(uuid "76b7a779-7c2a-4e9a-8637-dd2194803c92")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R10")
 					(unit 1)
@@ -16790,7 +16790,7 @@
 			(uuid "72576cca-6954-463f-99ae-8622eef04dfa")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0104")
 					(unit 1)
@@ -16856,7 +16856,7 @@
 			(uuid "a4884d5d-19d1-4d8b-8beb-35fe2557a3aa")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#FLG0105")
 					(unit 1)
@@ -16925,7 +16925,7 @@
 			(uuid "c329f4a0-98bd-4b09-94e0-9f6c678b80b0")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C13")
 					(unit 1)
@@ -16991,7 +16991,7 @@
 			(uuid "ef307560-6929-4be0-8476-82a681c6e318")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR01")
 					(unit 1)
@@ -17058,7 +17058,7 @@
 			(uuid "347db9e3-0771-47d8-a9cb-b7fbda5212be")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0112")
 					(unit 1)
@@ -17127,7 +17127,7 @@
 			(uuid "4292a1c0-9940-458a-8bf2-66b6ffc04dd6")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L8")
 					(unit 1)
@@ -17196,7 +17196,7 @@
 			(uuid "c6d0108e-a4e1-4749-9911-4f1e739bd92a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C17")
 					(unit 1)
@@ -17262,7 +17262,7 @@
 			(uuid "e16e4bec-f510-4c46-9253-0608779b146a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0137")
 					(unit 1)
@@ -17329,7 +17329,7 @@
 			(uuid "2cfe4981-ae4b-462b-a991-abab3959a61a")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R6")
 					(unit 1)
@@ -17398,7 +17398,7 @@
 			(uuid "8fbc3e1a-1bd5-4a49-b99e-e24c49baaf38")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "SW2")
 					(unit 1)
@@ -17465,7 +17465,7 @@
 			(uuid "9e70965d-a116-4258-9cf7-361b94cda207")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#PWR0103")
 					(unit 1)
@@ -17534,7 +17534,7 @@
 			(uuid "01530a3b-6241-4cb9-a35f-878c06450229")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C14")
 					(unit 1)
@@ -17603,7 +17603,7 @@
 			(uuid "4b6ba3ff-3860-4ae1-b987-4fec09a886d9")
 		)
 		(instances
-			(project "ZReach"
+			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "C19")
 					(unit 1)

@@ -1,4 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "ZReach")(type "KiCad")(uri "${KIPRJMOD}/ZReach.pretty")(options "")(descr ""))
+  (lib (name "ZReach")(type "KiCad")(uri "${KIPRJMOD}/ZRAD.pretty")(options "")(descr ""))
 )

@@ -464,7 +464,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "ZReach.kicad_pro",
+    "filename": "ZRAD.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -498,7 +498,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "ZReach.net",
+      "netlist": "ZRAD.net",
       "plot": "Gerbers/",
       "pos_files": "Gerbers/",
       "specctra_dsn": "",
