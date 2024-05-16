@@ -6802,10 +6802,6 @@
 		(uuid "0a93df3b-505e-46a1-8a8a-ea0cdafc5177")
 	)
 	(no_connect
-		(at 148.59 119.38)
-		(uuid "2335ed1e-9dbb-4a14-8b75-42e5fcbbff7f")
-	)
-	(no_connect
 		(at 99.06 55.88)
 		(uuid "2dd98d0f-7069-4f35-9385-194f1ac68eb5")
 	)
@@ -6848,10 +6844,6 @@
 	(no_connect
 		(at 194.31 129.54)
 		(uuid "7cc328fa-e335-403c-a186-27be96a8d1b5")
-	)
-	(no_connect
-		(at 99.06 73.66)
-		(uuid "7ecedf18-ac42-474d-80f4-2f34e2588aee")
 	)
 	(no_connect
 		(at 148.59 116.84)
@@ -7201,6 +7193,16 @@
 	)
 	(wire
 		(pts
+			(xy 101.6 149.86) (xy 107.95 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "229503a5-6d80-4918-86c5-77c2452ba12f")
+	)
+	(wire
+		(pts
 			(xy 217.17 82.55) (xy 219.71 82.55)
 		)
 		(stroke
@@ -7491,16 +7493,6 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 152.4) (xy 139.7 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "40e5634f-6ba6-4fca-8c01-7c2373bcefec")
-	)
-	(wire
-		(pts
 			(xy 95.25 21.59) (xy 93.98 21.59)
 		)
 		(stroke
@@ -7628,6 +7620,16 @@
 			(type default)
 		)
 		(uuid "4e4ed15a-77b1-42d2-aca1-5499274e1cae")
+	)
+	(wire
+		(pts
+			(xy 120.65 149.86) (xy 139.7 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e56e9fd-b687-4402-bb13-ccecd40d8d26")
 	)
 	(wire
 		(pts
@@ -7791,6 +7793,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 119.38) (xy 102.87 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b8c1b15-b966-4b37-98d9-2365fb95a20e")
+	)
+	(wire
+		(pts
 			(xy 193.04 67.31) (xy 193.04 66.04)
 		)
 		(stroke
@@ -7828,16 +7840,6 @@
 			(type default)
 		)
 		(uuid "5d9fa1bb-02c3-4d6b-9a64-623e20c84140")
-	)
-	(wire
-		(pts
-			(xy 138.43 149.86) (xy 138.43 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f696690-8fc5-4b28-b15e-4a100a70a336")
 	)
 	(wire
 		(pts
@@ -8281,6 +8283,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 149.86) (xy 139.7 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90356576-7b67-466c-bd15-d2e3da2357e3")
+	)
+	(wire
+		(pts
 			(xy 41.91 146.05) (xy 41.91 143.51)
 		)
 		(stroke
@@ -8321,16 +8333,6 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 149.86) (xy 138.43 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "963d0bcf-fc9e-4240-b592-c4d68f72e118")
-	)
-	(wire
-		(pts
 			(xy 194.31 149.86) (xy 194.31 154.94)
 		)
 		(stroke
@@ -8348,16 +8350,6 @@
 			(type default)
 		)
 		(uuid "96aafa68-8154-4ee3-8b0c-a9d75deb4398")
-	)
-	(wire
-		(pts
-			(xy 139.7 152.4) (xy 139.7 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "96e4d631-19b5-4d5f-8807-badc28a67a07")
 	)
 	(wire
 		(pts
@@ -8458,6 +8450,16 @@
 			(type default)
 		)
 		(uuid "a14273dc-6efa-48e2-9afe-19ccac3c1507")
+	)
+	(wire
+		(pts
+			(xy 101.6 152.4) (xy 101.6 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a191e11f-de12-4586-95da-6919b94f9884")
 	)
 	(wire
 		(pts
@@ -8721,16 +8723,6 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 149.86) (xy 101.6 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bbe4f213-cb69-43ba-ac49-82d6c921d450")
-	)
-	(wire
-		(pts
 			(xy 226.06 82.55) (xy 228.6 82.55)
 		)
 		(stroke
@@ -8778,16 +8770,6 @@
 			(type default)
 		)
 		(uuid "c296c3e3-444c-4d3b-81d2-67eb8e189fa7")
-	)
-	(wire
-		(pts
-			(xy 101.6 149.86) (xy 101.6 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c3100f46-1458-44eb-9b48-4732ed11fb0b")
 	)
 	(wire
 		(pts
@@ -9271,6 +9253,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 73.66) (xy 99.06 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebe1b2af-9375-4c7b-a5a2-4c1d2e0c2f59")
+	)
+	(wire
+		(pts
 			(xy 106.68 187.96) (xy 106.68 190.5)
 		)
 		(stroke
@@ -9318,6 +9310,26 @@
 			(type default)
 		)
 		(uuid "ecc2c6b9-a3e5-4124-beda-b7576f18df6a")
+	)
+	(wire
+		(pts
+			(xy 138.43 152.4) (xy 101.6 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed334aa7-f63d-40c3-80c5-56f5660e6dba")
+	)
+	(wire
+		(pts
+			(xy 148.59 119.38) (xy 102.87 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed54bab1-7c60-4a38-a1e5-b5f49def4ad2")
 	)
 	(wire
 		(pts
@@ -9418,6 +9430,16 @@
 			(type default)
 		)
 		(uuid "f63b6430-810a-4fb3-bbae-bd102570d58f")
+	)
+	(wire
+		(pts
+			(xy 138.43 134.62) (xy 138.43 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f76a1f06-8cb2-473b-bd94-a00439a1d84f")
 	)
 	(wire
 		(pts
@@ -9549,7 +9571,17 @@
 		)
 		(uuid "ff118db0-60c1-469a-9e00-e1e70f64467d")
 	)
-	(text "Two Bits of Trace debug.\nPTI is not used.\n"
+	(text "CP2105 is pinout compatible\nprovides dual COM port for\nZniffer via PTI."
+		(exclude_from_sim no)
+		(at 67.31 90.424 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "06f4fe61-0f20-4bb6-8310-12f384a50956")
+	)
+	(text "Two Bits of Trace debug.\nSWO is TD0.\n"
 		(exclude_from_sim no)
 		(at 106.172 161.798 0)
 		(effects
@@ -9867,6 +9899,17 @@
 		)
 		(uuid "424f5401-e4ed-418a-9670-9fa962eaa8ad")
 	)
+	(label "PTIDATA"
+		(at 138.43 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "42e20d5b-21d4-4b76-8009-3ef5858bcd9d")
+	)
 	(label "RFTX4"
 		(at 224.79 96.52 0)
 		(fields_autoplaced yes)
@@ -9912,7 +9955,7 @@
 		(uuid "6402211d-12fa-4e9b-84a9-b32012e456d5")
 	)
 	(label "TCLK"
-		(at 121.92 149.86 0)
+		(at 102.87 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9923,7 +9966,7 @@
 		(uuid "6d19e797-9671-4888-823d-40ecc16d487e")
 	)
 	(label "TD1"
-		(at 101.6 149.86 0)
+		(at 121.92 149.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14274,7 +14317,7 @@
 			)
 		)
 		(property "Value" "4U7"
-			(at 157.48 29.845 0)
+			(at 158.242 29.718 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15511,7 +15554,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p25.pdf"
 			(at 177.8 27.686 90)
 			(effects
 				(font
@@ -15520,7 +15563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "CR123A Battery holder with polarity pin"
 			(at 177.8 29.21 0)
 			(effects
 				(font
@@ -15707,7 +15750,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "ZReach:JST_PTH-4"
+		(property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
 			(at 116.84 198.12 0)
 			(effects
 				(font

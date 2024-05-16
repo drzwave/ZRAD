@@ -2,7 +2,12 @@
 
 Z-Wave USB Controller with best-in-class RF range Reference Application Design
 
-More to come here...
+<img src="./docs/ZRAD2024.png" width="250" align="right" />
+
+The Z-Wave Alliance Z-Wave Reference Application Design (ZRAD) is a simple to copy, easy to modify, Open-Source _Reference_ design of a Z-Wave best-in-class RF range device. 
+ZRAD is not a product you can purchase, but anyone is welcome to manufacture and sell a product based on ZRAD. 
+The objective is to accelerate Time-To-Market for Z-Wave products thru a simple to follow example with detailed step-by-step instructions.  
+See the [docs/ZRADTechDocs.docx](docs/ZRADTechDocs.docx) file for more details and the Theory of Operation.
 
 # Setup - Simplicity Studio GDSK 4.4.2 (Z-Wave 7.21.2)
 
@@ -21,7 +26,10 @@ Many aspects of the sample applications must be manually configured.
 3. The WSTK should show up in the Debug Adapters pane of the Launcher Perspective
     - if not, click on detect target, if that still doesn't work, use Commander to identify the part part
     - if that still doesn't work, check that the WSTK is set to OUT (or Mini) mode
-4. Select the WSTK in the debug adapters pane - SSv5 will then list the board as "custom" are Target Part as the ZG23
+    - if that doesn't work, check the ZG23 for solder shorts/opens and check the power supplies
+4. Select the WSTK in the debug adapters pane 
+    - SSv5 will then list the board as "custom" and Target Part as the ZG23
+5. Your ZRAD board can now be programmed with firmware
 
 ## Controller
 
@@ -128,7 +136,9 @@ The QWIIC connector is normally only used when implementing ZRAD as an End Devic
 
 # Railtest
 
-RailTest is required for calibrating the 39MHz crystal on the ZRAD PCB.
+RailTest is required for calibrating the 39MHz crystal on the ZRAD PCB. 
+The Z-Wave radio will work fine without calibrating the crystal but for MUST be calibrated before measuring the range.
+The crystal on each ZRAD unit must be individually calibrated within 1ppm to achieve maximum RF range over the lifetime of the board.
 
 ## Build Railtest
 
@@ -160,12 +170,47 @@ RailTest is required for calibrating the 39MHz crystal on the ZRAD PCB.
 12.	Rx 0
 13.	Setctune 0xTTT
 14.	Settxtone 1
-15.	Measure the peak - go back to step 11 until within 1000Hz
+15.	Measure the peak - go back to step 11 until within 1000Hz (1ppm)
 
 Once the value has been determined, use the following command to program the value:
+
 ```commander ctune set --value <ctunevalue> -d EFR32ZG23```
 
-Note that railtest can NOT program the value in NVM. Railtest will only TEMPORARILY assign the CTUNE value. Commander must be used to program the value permanently.
+Note that railtest does NOT program the value in NVM. Railtest will only TEMPORARILY assign the CTUNE value. Commander must be used to program the value permanently.
+
+# Schematic to PCB process
+
+KiCAD is used for the schematic and PCB design. The hardware/ZRAD directory contains the KiCAD database. A PDF of the schematic and PCB are provided for easy review. The Gerbers (used for fabricating PCBs) are in a ZIP file in the gerbers folder. The process to go from the schematic to a fabricated PCB is listed here:
+
+1. Open the Schematic file (ZRAD.kicad_sch) in KiCAD
+2. Make any changes to the schematic as desired and run the Electrical Rules Check
+3. Save the schematic file - File-\>save
+4. File-\>Export-\>netlist - click on Export Netlist and save file to ZRAD&#46;NET
+5. Open the Board file (ZRAD.kicad_pcb)
+6. Update the board from the schematic - Tools-\>Update PCB from Schematic - click on Update PCB
+7. Make any changes to the PCB desired
+8. Inspect-\>Design Rules Checker - Click on Run DRC
+9. Make sure DRC is clean!
+10. Generate the Gerbers and documentation files:
+11. File-\>Fabrication Outputs-\>Gerbers - click on PLOT, then Generate Drill Files 
+    - All the selected layers will be saved in the chosen folder
+12. File-\>Fabrication Outputs-\>Component Placement - click on Generate Position File
+13. Delete the ZRAD-bottom.pos file as there are no bottom side components
+14. There should be a total of 12 files - add these to a compressed ZIP file and name it ZRAD.zip
+15. Delete the 12 gerber files and just keep the ZIP file
+16. Review the gerbers using one of the many gerber viewer programs 
+    - Check that there is solder mask between the pins of the ZG23 and CP2102
+    - if not, check the Board Setup-\>Board Stackup-\>Solder Make/Paste-\>Solder mask expansion is set to 0.0508mm (not zero)
+    - Note that 0 leaves it up to the PCB manufacturer who often will use a 3mm expansion which will results in all the pads being shorted to each other as there is no mask between the pads 
+17. Plot the schematic - File-\>Plot plot to PDF and save as ZRAD.pdf
+18. Print the Fab drawing from the board editor - File-\>Print save landscape fit-to-page as ZRAD_FabricationDwg.pdf
+    - Select layers F.Silkscreen, F.Mask, User.Comments, Edge.Cuts and print in black and white
+19. Order PCBS!
+    - OSHPark.com is recommended - Use the gerbers and NOT the KiCAD files as the gerbers will give you exactly what is plotted, the PCB house may use other defaults for various clearances which might cause problems
+    - May 2024 cost $233 for 3 boards
+20. Order a Stencil using the ZRAD-F_Paste.gtp file
+
+Order components from the BOM for the needed quantity. Once everything arrives, use the stencil to swipe a layer of solder paste onto the PCBs, place the components by hand, then bake in an IR oven, clean up any solder issues. PCBs are now ready to test!
 
 # Directory Structure
 
@@ -173,10 +218,12 @@ Note that railtest can NOT program the value in NVM. Railtest will only TEMPORAR
     - Datasheet
     - Technical reference manual and theory of operation
 - hardware - PCB board design, bill of materials, Gerbers, KiCAD schematic and layout
-- softare - various hex files for quick testing purposes
+- sofware - various hex files for quick testing purposes
 - Test - Documents and scripts for testing
 
 # Reference Documents
 
-- See the docs/ZRADTechDocs.docx for detailed technical information on this project
+- See the [docs/ZRADTechDocs.docx](docs/ZRADTechDocs.docx) for detailed technical information on this project
+- [EFR32ZG23](https://www.silabs.com/documents/public/data-sheets/efr32zg23-datasheet.pdf) Datasheet - features and electrical specification
+- [EFR32xG23](https://www.silabs.com/documents/public/reference-manuals/efr32xg23-rm.pdf) Reference Manual - peripherals details 
 
