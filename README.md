@@ -34,15 +34,20 @@ Many aspects of the sample applications must be manually configured.
 ## Controller
 
 1. Build the bootloader - 
-    - more to come here
-
+    - See [DrZWave.Blog](https://drzwave.blog/2024/04/02/how-to-build-the-z-wave-bootloaders) for details
+2. 
 ## End Device
 
 1. Build the Bootloader
-    - File-\>New
-2. More to come here
+    - In SSv5, select your board connected to a WSTK to make sure you are building for the proper chip
+    - Click on Detect Target Part and verify the proper Target Part has been detected
+    - File-\>New-\>Silicon Labs Project Wizard
+    - Filter on Z-Wave
+    - Scroll down to "Bootloader - SoC Internal Storage (For Z-Wave Applications)" - select it, click on Create
+    - Build it & Flash the binary to the device
+    - Note that the Application will NOT start unless there is a bootloader programmed into the DUT
 3. Start with the Switch On/Off sample app - optionally use one of the others if applicable
-4. File-\>New-\>Silicon Labs Project WizardA
+4. File-\>New-\>Silicon Labs Project Wizard
 4. Check that IDE/Toochain is set to GNU ARM v12.2.x (and not v10.x.x)
 4. Check that the SDK is the latest
 4. Next
@@ -111,6 +116,8 @@ Many aspects of the sample applications must be manually configured.
 #endif
 ```
 
+    - PB1 must be assigned to gpio port gpioPortC pin 3
+
 8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
 
 # QWIIC Connector Setup
@@ -120,6 +127,8 @@ Fortunately SSv5 is able to add the I2CSPM component which makes adding and inte
 The QWIIC connector is normally only used when implementing ZRAD as an End Device.
 
 ## I2CSPM Setup
+
+While I2CSPM seems to work, since it is a polled peripheral it loads the CPU with a lot of polling loops which can make other parts of the system fail. Thus, this driver is not recommended.
 
 1. Click on the .slcp file - select the Software Components tab - enter I2CSPM into the seach bar
 2. Click on Platform-\>Driver-\>I2C-\>I2CSPM and Install it
