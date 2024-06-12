@@ -33,9 +33,14 @@ Many aspects of the sample applications must be manually configured.
 
 ## Controller
 
-1. Build the bootloader - 
+1. Download the SerialAPI using SSv5
+    - The standard SerialAPI pre-built for the RB4210 Radio Board will work for ZRAD as the pinouts are the same
+        - Note that the SerialAPI assumes a ZG23B, not ZG23A thus only download to a ZG23B
+    - The Demo SerialAPI includes the bootloader
+2. OR Build the SerialAPI (required if using a ZG23A or using your own keys)
+2. Build the bootloader if also building the SerialAPI 
     - See [DrZWave.Blog](https://drzwave.blog/2024/04/02/how-to-build-the-z-wave-bootloaders) for details
-2. 
+
 ## End Device
 
 1. Build the Bootloader
