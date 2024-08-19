@@ -82,7 +82,6 @@ const driver = new Driver(port, {
       `Time, Latitude, Longitude, Altitude, TxPower, RSSI, ${start}\n`,
     );
 
-    let now = new Date();
     let txpower = 0;
     let rssi = 0;
     const node = driver.controller.nodes.get(DUTNodeID);
@@ -128,6 +127,7 @@ const driver = new Driver(port, {
         const lon = payload.readInt32BE(0) / (1 << 23); // convert the fixed point value to floating point - the decimal point is bit 23
         const lat = payload.readInt32BE(4) / (1 << 23);
         const alt = payload.readIntBE(8, 3) / 100; // reading is in centimeters but most tools want meters
+        const now = new Date();
         const time = now.toLocaleTimeString("en-US", {
           hour: "2-digit",
           minute: "2-digit",
