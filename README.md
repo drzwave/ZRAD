@@ -68,28 +68,6 @@ Many aspects of the sample applications must be manually configured.
 5. Scroll down to Z-Wave and open it (click on the triangle)
 5. Click on Z-Wave Core Component gear icon
 5. Change the RF Region to the desired value (United State Long Range)
-6. Optionally enable debugprint to get messages out the UART for debugging purposes
-    - click on Z-Wave Debug Print
-    - click on Install
-    - SSv5 should also instal the IO Stream USART but sometimes it does not
-        - manually install Services-\>IO Stream-\>IO Stream USART
-        - Click on configure
-        - Choose USART0, Tx=PA08, RX=PA09
-        - Build the project
-        - If the build fails because USART is undefined, click on Configure in IO Stream USART
-        - Click on View Source
-            - if #warning "IO Stream USART peripheral is not configured" is at about line 90, then SSv5 didn't properly configure the USART
-            - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
-    - Edit app.c and uncomment the line: #define DEBUGPRINT
-6. Build the project - it should build OK
-    - If the build fails because APP\_BUTTON\_A or APP\_LED\_A is not defined:
-        - From the IDE perspective, right click the project then at the bottom select Properties
-        - Open C/C++ Build, then Settings
-        - Open GNU ARM C Compiler then Preprocessor
-        - scroll down to find the RADIO_BOARD_EFR32ZG23=1 and delete it
-        - Then in GNU ARM Assembler Symbols, find it again and delete it
-        - Sometimes this setting comes back after configuring other things in the SLCP and may need to be deleted again
-        - The project should then build OK
 7. Configure buttons and LEDs
     - The project built so far won't run. It will enter Default\_Handler because LEDs/buttons are not setup
 7. Click on the .slcp file and select the Software Components then scroll down to Z-Wave Boards and click on the gear icon
@@ -123,6 +101,28 @@ Many aspects of the sample applications must be manually configured.
 
     - PB1 must be assigned to gpio port gpioPortC pin 3
 
+6. Build the project - it should build OK
+    - If the build fails because APP\_BUTTON\_A or APP\_LED\_A is not defined:
+        - From the IDE perspective, right click the project then at the bottom select Properties
+        - Open C/C++ Build, then Settings
+        - Open GNU ARM C Compiler then Preprocessor
+        - scroll down to find the RADIO_BOARD_EFR32ZG23=1 and delete it
+        - Then in GNU ARM Assembler Symbols, find it again and delete it
+        - Sometimes this setting comes back after configuring other things in the SLCP and may need to be deleted again
+        - The project should then build OK
+6. Optionally enable debugprint to get messages out the UART for debugging purposes
+    - click on Z-Wave Debug Print
+    - click on Install
+    - SSv5 should also instal the IO Stream USART but sometimes it does not
+        - manually install Services-\>IO Stream-\>IO Stream USART
+        - Click on configure
+        - Choose USART0, Tx=PA08, RX=PA09
+        - Build the project
+        - If the build fails because USART is undefined, click on Configure in IO Stream USART
+        - Click on View Source
+            - if #warning "IO Stream USART peripheral is not configured" is at about line 90, then SSv5 didn't properly configure the USART
+            - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
+    - Edit app.c and uncomment the line: #define DEBUGPRINT
 8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
 
 # QWIIC Connector Setup

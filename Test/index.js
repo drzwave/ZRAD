@@ -23,7 +23,7 @@ const port =
 
 const DUTNodeID = 257; // UPDATE the NodeID for the Device Under Test here
 
-const SecondsPerSample = 10; // UPDATE this with the desired time (in seconds) between samples - (1-100)
+const SecondsPerSample = 3; // UPDATE this with the desired time (in seconds) between samples - (1-100)
 
 // Replace the securityKeys below if desired...
 /////////////////////////////////////////////////////////////////////////////
@@ -134,17 +134,19 @@ const driver = new Driver(port, {
           second: "2-digit",
         });
         const stat = payload[11];
+
         if (0x07 == (stat & 0x07)) { // ignore the reading if the GPS coordinates are not valid
           await fs.appendFile(
             "geoloc.csv",
             `${time}, ${lat}, ${lon}, ${alt}, ${txpower}, ${rssi}\n`,
           ); // write coords to the csv file
         }
-        console.log("Lat=", lat, "Lon=", lon, "Stat=", stat);
+
+        console.log("Lat=", lat, "Lon=", lon, "alt=", alt, "Sats=", stat>>4, "TxPower=",txpower);
       }
 
       await setTimeout(SecondsPerSample * 1000 / 2); // wait
-
+/*
       // send an indicator to blink three times for a visual indicator that the DUT is still in range
       try {
         await node.commandClasses.Indicator.set([
@@ -165,6 +167,7 @@ const driver = new Driver(port, {
 
       // Wait before sending the next command
       await setTimeout(SecondsPerSample * 1000 / 2);
+*/
     }
   });
 
