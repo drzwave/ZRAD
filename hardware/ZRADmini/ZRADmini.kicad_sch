@@ -6,8 +6,8 @@
 	(paper "A")
 	(title_block
 		(title "ZRAD Mini Z-Wave  Reference Application Design")
-		(date "2024-11-13")
-		(rev "A")
+		(date "2024-12-18")
+		(rev "A1")
 		(company "Z-Wave Alliance")
 	)
 	(lib_symbols
@@ -9630,9 +9630,9 @@
 		)
 		(uuid "96ef4bc0-cf0a-41b3-8e85-3684813af34c")
 	)
-	(text "ANTENNA TUNE\nVALUES DETERMINED\nAFTER TUNING"
+	(text "PCB ANTENNA TUNING:\nUS: C4=22nH, C3=3.0pF, C4=3.3pF\nEU: C4=27nH, C3=4.7pF, C4=4.7pF"
 		(exclude_from_sim no)
-		(at 240.03 111.76 0)
+		(at 229.362 111.76 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11486,6 +11486,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
@@ -12977,6 +12978,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
@@ -15926,6 +15928,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
