@@ -9,7 +9,7 @@ ZRAD is not a product you can purchase, but anyone is welcome to manufacture and
 The objective is to accelerate Time-To-Market for Z-Wave products thru a simple to follow example with detailed step-by-step instructions.  
 See the [docs/ZRADTechDocs.docx](docs/ZRADTechDocs.docx) file for more details and the Theory of Operation.
 
-# Setup - Simplicity Studio GDSK 4.4.2 (Z-Wave 7.21.2)
+# Setup - Simplicity Studio GDSK 4.4.2 (Z-Wave 7.21.2) ------------TODO update for 2024.12.0(or 1)
 
 This setup guide assumes a ZRAD board has been assembled and is ready for programming.
 ZRAD can be programmed as either a Controller or an End Device.
@@ -40,8 +40,9 @@ Many aspects of the sample applications must be manually configured.
 2. OR Build the SerialAPI (required if using a ZG23A or using your own keys)
 2. Build the bootloader if also building the SerialAPI 
     - See [DrZWave.Blog](https://drzwave.blog/2024/04/02/how-to-build-the-z-wave-bootloaders) for details
+    - TODO add how to build the serialAPI and add special features - what needs to be done to OTW??? keys???
 
-## End Device
+## End Device   -----------TODO - update with new SDK and add details on creating keys
 
 1. Build the Bootloader
     - In SSv5, select your board connected to a WSTK to make sure you are building for the proper chip
@@ -124,6 +125,22 @@ Many aspects of the sample applications must be manually configured.
             - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
     - Edit app.c and uncomment the line: #define DEBUGPRINT
 8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
+
+## Zniffer
+
+ZRADMini makes a great Zniffer for debugging Z-Wave networking issues. 
+
+1. Connect ZRADMini to a WSTK using the Tag-Connect connector
+2. Open Simplicity Studio
+3. From the Launcher perspective, in the My Products tab, enter the xG23-RB4210A
+    - The RB4210A is a +20dBm devkit using a ZG23B and is pinout compatible with ZRADmini
+    - Much easier to simply download the pre-built Zniffer application than trying to configure it for ZRAD
+4. Click on the Example Projects tab and select Z-Wave
+5. Filter on "zniffer" and choose only Demos
+6. Pick the desired Z-Wave - NCP Zniffer Beta (EU\_LR or US\_LR regions) and click on RUN
+7. Choose the proper WSTK to program the ZRADMini
+8. Unplug from the WSTK and plug into USB
+9. Zniffer should detect ZRADMini as a zniffer
 
 # QWIIC Connector Setup
 

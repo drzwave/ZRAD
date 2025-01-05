@@ -17,7 +17,7 @@ import traceback
 sys.path.insert(0,'./tinySA') # add the TinySA library to the path - this was downloaded from tinysa.org and then improved
 import tinySA as sa # needs numpy and matplotlib libraries
 
-DEBUG = 10   # print debug messages - the higher the value, the more details are printed
+DEBUG = 3   # print debug messages - the higher the value, the more details are printed
 
 # USB IDs for a WSTK to open the serial port to RailTest
 WSTK_VID = 0x1366
@@ -50,15 +50,14 @@ def getwstkport() -> str:
 
 class ZG23CrystalCal:
     def __init__(self):
-        print("called init", flush=True)
         try:
             self.wstk = getwstkport()
             self.wstkser = "123"
             #self.wcom=None
             self.wcom = serial.Serial(self.wstk, timeout=3)
-            if DEBUG>2: print("WSTK COM Port={}".format(self.wstk))
+            if DEBUG>5: print("WSTK COM Port={}".format(self.wstk))
             self.sa = sa.tinySA()   # open the COM port to TinySA
-            if DEBUG>2: print("TinySA COM Port={}".format(self.sa.dev), flush=True)
+            if DEBUG>5: print("TinySA COM Port={}".format(self.sa.dev), flush=True)
         except Exception as err:
             print("failed to open devices:",err)
             traceback.print_tb(err.__traceback__)
@@ -175,7 +174,7 @@ class ZG23CrystalCal:
             self.sa.send_scan(START_FREQ, STOP_FREQ,POINTS_SCAN) # start a scan - returns once the scan is complete which typically takes 1.5s
             freq=self.sa.fetch_marker() # returns the FREQ and the signal strength of the peak signal
             self.TxToneOff()
-            if DEBUG > 3: print("ctune={} Freq={} in {:.2f}s".format(ctune,freq,time.time()-current_time), flush=True)
+            if DEBUG > 1: print("ctune={} Freq={} in {:.2f}s".format(ctune,freq,time.time()-current_time), flush=True)
             current_time=time.time()
             if freq != None:
                 if freq[1] > MIN_RSSI_TXTONE: # The signal strength has to be high or else just ignore the reading and try again
@@ -190,7 +189,7 @@ class ZG23CrystalCal:
                             ctune +=delta
                     self.setCtune(ctune)
                 else:
-                    if DEBUG>3: print("marker strength is low {}".format(freq[1]))
+                    if DEBUG>1: print("marker strength is low {}".format(freq[1]))
 
         if not calibrated:  # then calibration failed
             self.setCtune(initialCtune) # return the DUT to the original ctune value in anticipation of trying again

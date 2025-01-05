@@ -36,16 +36,16 @@ import zebra      # Zebra label printer library - send the ZPL code to the print
 
 # These 2 values are the minimum and maximum expected current measurements in milliAmps of the DUT using the WSTK AEM
 # They have be derived empircally and may need future adjustments - TODO - need more testing here!!!
-CURRENT_MIN = 1.0
+CURRENT_MIN = 5.0
 CURRENT_MAX = 10.0
 
-DEBUG = 10   # print debug messages - the higher the value, the more details are printed
+DEBUG = 5   # print debug messages - the higher the value, the more details are printed
 
 # USB IDs for a WSTK to open the serial port to RailTest
 WSTK_VID = 0x1366
 WSTK_PID =  0x0105
 
-APPLICATION_FILENAME = "../Software/SwOnOff_ZG23B_442_ZRAD_USLR.s37"
+APPLICATION_FILENAME = "../Software/ZRAD_ED_merged.s37"
 RAILTEST_FILENAME = "../Software/railtest_ZG23_442.s37"
 
 # The Secure Engine in the EFR32xG23 must match the application SSDK version!
@@ -176,13 +176,13 @@ class ZRADCalProgTest:
     def FlashApplication(self):
         ''' Flash the application which includes the bootloader and keys'''
         startprogram = time.time()
-        if DEBUG>2: print("Flashing Application start")
+        if DEBUG>2: print("Flashing Application start",flush=True)
         rtn=subprocess.check_output(CMDR + " flash -d EFR32ZG23 {} --s {}".format(APPLICATION_FILENAME,self.wstkser[self.side]),shell=True)
         if "completed successfully" not in rtn.decode():
             print("Flashing Application failed")
             print(rtn)
             return(False)
-        if DEBUG>2: print("Flashing Application complete in {} seconds".format(round(time.time()-startprogram,2)))
+        if DEBUG>2: print("Flashing Application complete in {} seconds".format(round(time.time()-startprogram,2)),flush=True)
         time.sleep(0.5) # wait for the chip to boot and compute the DSK 
         return(True)
 
@@ -265,14 +265,14 @@ class ZRADCalProgTest:
     def zeb_print(self):
         ''' print the labels '''
         l = zpl.Label(25.4*4,12.7*4,12) # 1x0.5" at 300dpi
-        l.origin(17,1)
+        l.origin(17,0)
         i=Image.open('qrPack.png')
         if DEBUG>7: print(i.size[0], i.size[1])
         imageHeight = l.write_graphic(i,16)
         l.endorigin()
         self.zeb.output(l.dumpZPL())
         l = zpl.Label(25.4*4,12.7*4,12) # 1x0.5" at 300dpi
-        l.origin(14,1)
+        l.origin(14,0)
         i=Image.open('qrProd.png')
         if DEBUG>7: print(i.size[0], i.size[1])
         imageHeight = l.write_graphic(i,22) # 2nd arg is width in mm
@@ -305,10 +305,14 @@ class ZRADCalProgTest:
         print(" <enter>=test the DUT in jig listed")
         print(" l=test the LEFT DUT")
         print(" r=test the RIGHT DUT")
-        print(" t=Run the functional test")
         print(" F=Clear DUT flash to be Factory Fresh")
+        print(" S=Program Secure Engine")
         print(" C=Run Crystal Calibration")
-        print(" p=Print Labels of the last DUT")
+        print(" A=Program application")
+        print(" t=Run the functional test")
+        print(" Q=Generate QR Code Labels")
+        print(" P=Print Labels of the last DUT")
+        print(" Z=Toggle label printing On/Off")
         print(" ?=Print this help message")
         print("")
 
@@ -335,7 +339,7 @@ if __name__ == "__main__":
         if len(cmd) == 0: # just pressed enter so test the DUT and switch at the end
             testedUnits +=1
             dutstarttime = time.time()
-            print("Testing {}".format(DUT_side[wstk.side]))
+            print("Testing {}".format(DUT_side[wstk.side]), flush=True)
 
             good = wstk.ProgramSecureEngine() # 1) check SE and update if needed
             if not good:  # SE programming failed so skip the rest - typically re-seat or replace the DUT
@@ -365,23 +369,33 @@ if __name__ == "__main__":
             print("\n\r\n\r{} DUT PASSED {}{}{} in {} seconds\n\r".format(DUT_side[wstk.side],DUT_arrow[wstk.side],DUT_arrow[wstk.side],DUT_arrow[wstk.side],round(time.time()-dutstarttime,0)))
 
             goodUnits +=1
-            if RCOM != None: wstk.side += 1 # only switch sides if there are 2 Jigs
+            if wstk.wstk[1] != None: wstk.side += 1 # only switch sides if there are 2 Jigs
             if wstk.side>1: 
                 wstk.side=0
         elif 'l' in cmd:
             wstk.side=0
         elif 'r' in cmd:
             wstk.side=1
-        elif 't' in cmd:
-            wstk.QuickFunctionalTest()
         elif 'F' in cmd:
             wstk.FactoryFresh()
+        elif 'S' in cmd:
+            wstk.ProgramSecureEngine()
         elif 'C' in cmd:
             wstk.CalibrateCrystal()
+        elif 'A' in cmd:
+            wstk.FlashApplication()
+        elif 't' in cmd:
+            wstk.QuickFunctionalTest()
+        elif 'Q' in cmd:
+            wstk.CreateQRImages() 
+        elif 'P' in cmd:
+            wstk.zeb_print()
         elif 'L' in cmd:
             wstk.LockDebugPort()
-        elif 'p' in cmd:
-            wstk.zeb_print()
+        elif 'Z' in cmd:
+            if SKIP_PRINTING: SKIP_PRINTING=False
+            else: SKIP_PRINTING=True
+            print("SKIP_PRINTING=",SKIP_PRINTING)
         elif 'x' in cmd:
             pass
         else:

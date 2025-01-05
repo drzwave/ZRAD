@@ -74,8 +74,9 @@ class SmartStartQR():
         img=qr.make_image()     # convert to an image
         if DEBUG>5: print("image size={}".format(img.size))
         (x,y)=img.size          # Typically 124x124
+        img2 = img.get_image()  # to pass the checks inside Image.paste, convert the QRcode.PIL image into an Image.Image
         imgProd=Image.new('L', (x+ 180,y+50),255)       # create product greyscale image big enough for the QR and text and Z-Wave Plus Logo
-        imgProd.paste(img,(15,27))
+        imgProd.paste(img2,(15,27))     # the X,Y positions may need to be adjusted based on the printer and labels
         imgZWLogo=Image.open("Z-Wave_Plus_Logo.png") # This is optional 
         # other logos, images or text can be included on the label.
         # The final size of the label is managed by the printer drivers for the printer.
@@ -88,7 +89,7 @@ class SmartStartQR():
         imgProd.save("qrProd.png")                  # This image goes ON the PRODUCT itself
 
         imgPack=Image.new('L', (x+100,y+50),255)     # create the package image which has the full DSK in text per Z-Wave Certification
-        imgPack.paste(img,(10,28))
+        imgPack.paste(img2,(10,28))
         img3=ImageDraw.Draw(imgPack)
         img3.text((8,10),"Z-WAVE DSK",font=font1, fill=0)
         for i in range(0,8):

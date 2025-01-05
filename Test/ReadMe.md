@@ -33,3 +33,9 @@ This is a manual procedure if the test jig system is not available.
 14. Open PuTTY and observe the DEBUGPRINT from the sample app
 15. Unplug from USB & insert CR123A battery - verify the board is still functional
 16. Test other optional features like the QWIIC connector, the GPIOs, LEDs other applications
+
+# Test Jig System
+
+A 3D printed test jig and associated scripts provides a complete manufacturing flow for ZRAD.
+
+MORE TO COME HERE!!!
