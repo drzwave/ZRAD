@@ -20,6 +20,9 @@
     5) Print the QR code labels
     6) Display pass/fail to the screen and wait for the operator to insert the next DUT
     
+    TODO - add a test for the USB data interface as there have been several board with a manufacturing defect in the USB circuitry
+        Requires the operator plug in a USB cable. 
+        Better solution would be test pads on the 2 USB data pins (and +5V/GND).
 '''
 
 import serial
