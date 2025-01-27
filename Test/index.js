@@ -92,6 +92,15 @@ async function main() {
   // except the controller itself
     .filter((id) => id !== driver.controller.ownNodeId);
 
+  // Find the first node that supports Geolocation CC
+  const geolocNode = [...driver.controller.nodes.values()]
+    .find(node => node.supportsCC(CommandClasses["Geographic Location"]));
+  if (!geolocNode) {
+    console.error("No node supporting Geographic Location CC found");
+    process.exit(1);
+  }
+
+
   while (true) {
     // Create a custom command with raw payload
     const cc = new CommandClass({
