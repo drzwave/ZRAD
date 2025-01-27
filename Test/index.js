@@ -59,11 +59,11 @@ const driver = new Driver(port, {
     ),
   },
   rf: {
-    // Set the RF region to US_LR on startup
-    region: RFRegion["USA (Long Range)"],
+    // Set the RF region to EU_LR on startup
+    region: RFRegion["Europe (Long Range)"],
     // Configure TX Power and LR Powerlevel if desired
     txPower: {
-      powerlevel: -1,
+      powerlevel: 13,
       measured0dBm: 0,
     },
     maxLongRangePowerlevel: 20,
