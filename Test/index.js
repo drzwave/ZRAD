@@ -88,7 +88,7 @@ const driver = new Driver(port, {
 
     while (true) {
       // Create a custom command with raw payload
-      const cc = new CommandClass(driver, {
+      const cc = new CommandClass({
         nodeId: DUTNodeID,
         ccId: CommandClasses["Geographic Location"],
         ccCommand: 0x02, // Get

@@ -1,0 +1,15 @@
+{
+  "name": "zwavejs-geoloc",
+  "version": "1.0.0",
+  "description": "Geolocation CC based range test using Z-Wave JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zwave-js": "^14.3.7"
+  }
+}
