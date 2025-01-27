@@ -91,7 +91,7 @@ Follow these instructions to quickly test a new board.
 13. Finish - wait for the project to be created
 14. **Generate the Keys**
     - Keys are needed to OTA the firmware - do NOT use the sample keys!
-        - Keys are unique for each project for ALL revisions - only generate the keys ONCE per project
+        - Keys are unique for each project for ALL revisions. Only generate the keys ONCE per project.
     - Create a folder called "keys" in the project
     - From the keys folder, run Commander:
         - ```commander gbl keygen --type ecc-p256 -o <projectname>_sign.key```
@@ -101,17 +101,17 @@ Follow these instructions to quickly test a new board.
         - Or combine the keys, bootloader and app into 1 file:
         - ```commander convert --tokengroup znet --tokenfile <projectname>_encrypt.key --tokenfile <projectname>_sign.key-tokens.txt <bootloaderfilename> <applicationfilename> -o <projectname>_merged.s37 --device EFR32ZG23```
     - Modify the Post Build Editor in SSv5 to use these new keys when creating the OTA file
-        - Double click the *.slpb file which will open the Post Build Editor
+        - Double click the \*.slpb file which will open the Post Build Editor
         - click on the create_gbl parameter
         - Click on the BROWSE button of the Signing Key, select the *_sign.key from above, then the Encrypt Key and select the *_encrypt.key file
 
         - To check the keys and Post Build is good, run:
         - ```commander gbl parse *.gbl --decrypt ../keys/<projectname>_encrypt.key --app temp.hex```
-        - should complete without error and copy the application to the temp.hex file
+            - Should complete without error and copy the application to the temp.hex file
         - To check the keys work, program a unit with the app, keys and bootloader, then increment the version, build it again and OTA the incremented version
-
+14. **Customize the Application**
 15. Select the project in the Project Explorer of the Simplicity IDE perspective
-16. Select the <proj>.slcp file
+16. Select the \*.slcp file
 17. Select the Software Components tab
 18. Scroll down to Z-Wave and open it (click on the triangle)
 19. Click on Z-Wave Core Component gear icon
@@ -128,9 +128,9 @@ Follow these instructions to quickly test a new board.
 7. Click on Z-Wave Verion Numbers
     - Check the Override application version (TRUE=turns blue)
     - Enter the Application Major and Minor version. Note that the Minor and/or Major version MUST be incremented to OTA the firmware
-7. Configure buttons and LEDs:
+7. Configure Buttons and LEDs:
     - The project will not build yet because LEDs/buttons are not setup for the sample application
-    - Search for "simple"
+    - Search for "simple" in the Software Components tab of the *.slcp file
     - Click on Platform-\>Driver-\>Button-\>Simple Button-\>btno0-\>Configure
         - General - Interrupt
         - SL_SIMPLE_BUTTON_BTN0 select PC03 and name it TOGGLE
@@ -145,10 +145,10 @@ Follow these instructions to quickly test a new board.
         - SL_SIMPLE_LED_LED1 = PA10 and label it BLUE
     - TODO add LED2 PC04=RED
 6. Build the project - it should build OK
-    - Flash to the DUT
+    - Flash the DUT
     - Get the QR code or DSK and paste into the PC Controller
     - The DUT should join the Z-Wave network in a few seconds.
-    - Send a BADIC ON and the BLUE LED should turn on
+    - Send a BASIC ON and the BLUE LED should turn on
     - Send an Indicator SET which should blink the GREEN LED
     - Press the LEARN button which should send a NIF and the GREEN LED should blink
 6. Optionally enable debugprint to get messages out the UART for debugging purposes
@@ -164,7 +164,6 @@ Follow these instructions to quickly test a new board.
             - if #warning "IO Stream USART peripheral is not configured" is at about line 90, then SSv5 didn't properly configure the USART
             - comment out the #warning line, then manually set the next several lines with the proper GPIO vlues (they are pretty obvious).
     - Edit app.c and uncomment the line: #define DEBUGPRINT
-8. Build and download - press the INCLUDE button should send a Z-Wave NIF and cause the blue LED to blink. Send a BASIC SET ON should turn the green LED on.
 9. Note that the Secure Element firmware version MUST be the same as the SDK version the app and bootloader were built with. Ensure you have the proper version when programming production devices.
 10. TODO
     - What other stuff should every project update???
@@ -173,7 +172,9 @@ Follow these instructions to quickly test a new board.
     - watchdog timer
     - memset/clr optimization?
     - Turn on the iCache?
-    - 
+    - add other command classes
+    - SPI?
+    - Red LED
 
 ## Zniffer
 
@@ -193,27 +194,27 @@ ZRADMini makes a great Zniffer for debugging Z-Wave networking issues.
 
 # Troubleshooting
 
-    - Firmware doesn't seem to start? Did you flash the bootloader? The app won't start without a bootloader.
-    - If your ZRAD is not able to be detected using SSv5 or commander:
-        - Check the ZG23 for solder shorts/opens and check the power supplies
-        - Is the WSTK in Out or Mini mode?
-        - Can Commander detect the part? Simplicity Studio sometimes is unable to detect the part but Commander is will help debug the issue
-        - Is the debug interface locked? Use Commander to Unlock Debug Access or Recover Bricked Device
-    - If the DUT does not seem to generate any RF traffic, the problem is often due to the wrong Region stored in NVM (IE: EU when you want USLR).
-        - To reset the Region token: ```commander flash --tokengroup znet --token MFG_ZWAVE_COUNTRY_FREQ:0xFF -d EFR32ZG23```
-        - Note: the token in NVM will override the value set in the firmware so downloading firmware may not fix the problem
-    - OTA fails with a 0x04 error (someday Silabs will eventually separate this out into more errors)
-        - Usually caused by the keys not being programmed into the DUT
+- Firmware doesn't seem to start? Did you flash the bootloader? The app won't start without a bootloader.
+- If your ZRAD is not able to be detected using SSv5 or commander:
+    - Check the ZG23 for solder shorts/opens and check the power supplies
+    - Is the WSTK in Out or Mini mode and the slide switch set to AEM?
+    - Can Commander detect the part? Simplicity Studio sometimes is unable to detect the part but Commander can and will help debug the issue
+    - Is the debug interface locked? Use Commander to Unlock Debug Access or Recover Bricked Device
+- If the DUT does not seem to generate any RF traffic, the problem is often due to the wrong Region stored in NVM (IE: EU when you want USLR).
+    - To reset the Region token: ```commander flash --tokengroup znet --token MFG_ZWAVE_COUNTRY_FREQ:0xFF -d EFR32ZG23```
+    - Note: the token in NVM will override the value set in the firmware so downloading firmware may not fix the problem
+- OTA fails with a 0x04 error (someday Silabs will eventually separate this out into more errors)
+    - Usually caused by the keys not being programmed into the DUT
 
 # QWIIC Connector Setup
 
-The QWIIC connector on ZRAD makes it easy to connect any of the SparkFun sensors or other devices via a standard I2C interface. 
-Fortunately SSv5 is able to add the I2CSPM component which makes adding and interfacing to I2C devices fairly easy.
+The QWIIC connector on ZRAD makes it easy to connect any of the [Sparkfun](https://www.sparkfun.com/qwiic) sensors or other devices via a standard I2C interface. 
+Fortunately SSv5 has the I2CSPM component which makes adding and interfacing to I2C devices fairly easy.
 The QWIIC connector is normally only used when implementing ZRAD as an End Device.
 
 ## I2CSPM Setup
 
-While I2CSPM seems to work, since it is a polled peripheral it loads the CPU with a lot of polling loops which can make other parts of the system fail. Thus, this driver is not recommended.
+While I2CSPM seems to work, since it is a polled peripheral it loads the CPU with a lot of polling loops which can make other parts of the system fail. Thus, this driver is not recommended but works fine for prototypes.
 
 1. Click on the .slcp file - select the Software Components tab - enter I2CSPM into the seach bar
 2. Click on Platform-\>Driver-\>I2C-\>I2CSPM and Install it
@@ -231,7 +232,7 @@ While I2CSPM seems to work, since it is a polled peripheral it loads the CPU wit
 # Railtest
 
 RailTest is required for calibrating the 39MHz crystal on the ZRAD PCB. 
-The Z-Wave radio will work fine without calibrating the crystal but for MUST be calibrated before measuring the range.
+The Z-Wave radio will work fine without calibrating the crystal but MUST be calibrated before measuring the RF range.
 The crystal on each ZRAD unit must be individually calibrated within 1ppm to achieve maximum RF range over the lifetime of the board.
 
 ## Build Railtest
@@ -308,6 +309,7 @@ Order components from the BOM for the needed quantity. Once everything arrives, 
 
 # Directory Structure
 
+- 3D - mechanical drawings for jigs and enclosures
 - docs - documentation folder
     - Datasheet
     - Technical reference manual and theory of operation

@@ -18,10 +18,11 @@ process.on("unhandledRejection", (r) => {
 /////////////////// REQUIRED CUSTOMIZATION ///////////////////////////////////
 // UPDATE THE PORT name to the one currently connected
 const port =
-  "/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1a4581bf3c1fee1183758157024206e6-if00-port0";
+//  "/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1a4581bf3c1fee1183758157024206e6-if00-port0";
+  "COM5";
 // Then update the keys as needed - extract them from Z-Wave JS UI.
 
-const DUTNodeID = 257; // UPDATE the NodeID for the Device Under Test here
+const DUTNodeID = 259;
 
 const SecondsPerSample = 3; // UPDATE this with the desired time (in seconds) between samples - (1-100)
 
@@ -34,27 +35,27 @@ const driver = new Driver(port, {
   // 	forceConsole: true,
   // },
   securityKeys: {
-    S0_Legacy: Buffer.from("5DD5A19627FB9972B4AA32F7F94FD3B8", "hex"),
+    S0_Legacy: Buffer.from("00000000000000000000000000000001", "hex"),
     S2_Unauthenticated: Buffer.from(
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "00000000000000000000000000000002",
       "hex",
     ),
     S2_Authenticated: Buffer.from(
-      "02B64AC2AF397AF692EDF7CFD4175236",
+      "0102030405060708090A0B0C0D0E0F03",
       "hex",
     ),
     S2_AccessControl: Buffer.from(
-      "C6FDA8C1F65601DB868B2194F76324DF",
+      "AACCAACCAACCAACCAACCAACCAACCAA04",
       "hex",
     ),
   },
   securityKeysLongRange: {
     S2_Authenticated: Buffer.from(
-      "A99662FA524F4EE7890EFDCDBF80C703",
+      "010203040506070809CAFEBABEBEEF05",
       "hex",
     ),
     S2_AccessControl: Buffer.from(
-      "E3CE27F99226818C41CA629D9BEB336D",
+      "CCAACCAACCAACCAACCAACCAACCAACC06",
       "hex",
     ),
   },
@@ -93,18 +94,19 @@ async function main() {
     .filter((id) => id !== driver.controller.ownNodeId);
 
   // Find the first node that supports Geolocation CC
-  const geolocNode = [...driver.controller.nodes.values()]
+  let geolocNode = [...driver.controller.nodes.values()]
     .find(node => node.supportsCC(CommandClasses["Geographic Location"]));
   if (!geolocNode) {
     console.error("No node supporting Geographic Location CC found");
-    process.exit(1);
+//    process.exit(1);
+    geolocNode = DUTNodeID;
   }
 
 
   while (true) {
     // Create a custom command with raw payload
     const cc = new CommandClass({
-      nodeId: DUTNodeID,
+      nodeId: geolocNode,
       ccId: CommandClasses["Geographic Location"],
       ccCommand: 0x02, // Get
     });
