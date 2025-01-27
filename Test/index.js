@@ -1,9 +1,11 @@
+// @ts-check
+
 // Z-Wave Geographic Location Command Class range test sample code
 // This javascript runs under Z-Wave JS and Node.js which will poll a DUT
 // every 10s for it's GeoLoc coordinates and write them to a file.
 //
 const { Driver, CommandClass } = require("zwave-js");
-const { CommandClasses, RFRegion } = require("@zwave-js/core");
+const { CommandClasses, RFRegion, InterviewStage, RssiError } = require("@zwave-js/core");
 
 const path = require("node:path");
 const { setTimeout } = require("node:timers/promises");
@@ -17,14 +19,11 @@ process.on("unhandledRejection", (r) => {
 
 /////////////////// REQUIRED CUSTOMIZATION ///////////////////////////////////
 // UPDATE THE PORT name to the one currently connected
-const port =
-//  "/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1a4581bf3c1fee1183758157024206e6-if00-port0";
-  "COM5";
+// or simply pass it as an argument to the script
+const port = process.argv[2] ?? "COM5";
 // Then update the keys as needed - extract them from Z-Wave JS UI.
 
-const DUTNodeID = 259;
-
-const SecondsPerSample = 3; // UPDATE this with the desired time (in seconds) between samples - (1-100)
+const SecondsPerSample = 5; // UPDATE this with the desired time (in seconds) between samples - (1-100)
 
 // Replace the securityKeys below if desired...
 /////////////////////////////////////////////////////////////////////////////
@@ -76,43 +75,91 @@ const driver = new Driver(port, {
   allowBootloaderOnly: true,
 })
   .on("error", console.error)
-  .once("driver ready", main);
+  // When re-using the Z-Wave JS UI cache, comment out the line below (interviewNodes)
+  // and uncomment the line after it (main)
+  .once("driver ready", interviewNodes);
+  // .once("driver ready", main);
 void driver.start();
 
+async function interviewNodes() {
+  for (const node of driver.controller.nodes.values()) {
+    // Force a new interview for all nodes that have been interviewed before
+    if (node.isControllerNode) continue;
+    if (node.interviewStage !== InterviewStage.Complete) {
+      continue;
+    }
+
+    console.log(`Interviewing node ${node.id}...`);
+    node.refreshInfo({
+      resetSecurityClasses: true,
+      waitForWakeup: true,
+    });
+  }
+
+  driver.on("all nodes ready", main);
+}
+
+function nodeIdToFileName(nodeId) {
+  return `geoloc_${nodeId.toString().padStart(3, "0")}.csv`;
+}
+
 async function main() {
-  const start = new Date();
-  await fs.appendFile(
-    "geoloc.csv",
-    `Time, Latitude, Longitude, Altitude, TxPower, RSSI, ${start}\n`,
-  );
-
-  let txpower = 0;
-  let rssi = 0;
-  // Get the node IDs of all connected nodes
-  const nodeIds = [...driver.controller.nodes.keys()]
-  // except the controller itself
-    .filter((id) => id !== driver.controller.ownNodeId);
-
   // Find the first node that supports Geolocation CC
-  let geolocNode = [...driver.controller.nodes.values()]
+  const geolocNode = [...driver.controller.nodes.values()]
     .find(node => node.supportsCC(CommandClasses["Geographic Location"]));
   if (!geolocNode) {
     console.error("No node supporting Geographic Location CC found");
-//    process.exit(1);
-    geolocNode = DUTNodeID;
+    process.exit(1);
   }
 
+  // Find all other nodes
+  const otherNodes = [...driver.controller.nodes.values()]
+  // except the controller itself
+    .filter((node) => !node.isControllerNode)
+    // and except the node that supports the Geolocation CC
+    .filter((node) => node.id !== geolocNode.id)
+    // and keep only those that support Firmware Update Meta Data CC
+    .filter((node) => node.supportsCC(CommandClasses["Firmware Update Meta Data"]))
+
+  const skippedNodes = [...driver.controller.nodes.values()]
+    .filter((node) => node.isControllerNode || node.id === geolocNode.id)
+    .filter((node) => !node.supportsCC(CommandClasses["Firmware Update Meta Data"]));
+
+  await setTimeout(1000);
+  
+  // Print some info about the nodes
+  console.log();
+  console.log("All nodes interviewed")
+  console.log(`Geoloc node: ${geolocNode.id}`);
+  console.log(`Other nodes: ${otherNodes.map((node) => node.id).join(", ")}`);
+  console.log(`Skipped nodes: ${skippedNodes.map((node) => node.id).join(", ")}`);
+  console.log();
+
+  await setTimeout(5000);
+
+  const defaultMeshTxPower = (await driver.controller.getPowerlevel()).powerlevel;
+  
+  const start = new Date();
+
+  // Create a CSV file for each end device
+  for (const node of [geolocNode, ...otherNodes]) {
+    await fs.appendFile(
+      nodeIdToFileName(node.id),
+      `Time, Latitude, Longitude, Altitude, TxPower, RSSI, ${start}\n`,
+    );
+  }
 
   while (true) {
-    // Create a custom command with raw payload
-    const cc = new CommandClass({
-      nodeId: geolocNode,
+
+    // Try to get the geographic location from the Geoloc node
+    const geolocGet = new CommandClass({
+      nodeId: geolocNode.id,
       ccId: CommandClasses["Geographic Location"],
       ccCommand: 0x02, // Get
     });
 
     // Set up a listener for the response, returning null if it times out
-    const response = driver
+    const geolocResponse = driver
       .waitForCommand(
         (cc) =>
           cc.ccId === CommandClasses["Geographic Location"]
@@ -121,70 +168,120 @@ async function main() {
       )
       .catch(() => null);
 
+    let txPower = 0;
+    let ackRSSI = 0;
+      
     try { // ignore errors on a NACK
       // Send the command
-      await driver.sendCommand(cc, {
+      await driver.sendCommand(geolocGet, {
         // Extract the TX Power and RSSI from the TX Report when it is received
         onTXReport: (report) => {
           // The values behind ?? are used in case the info is not present in the report
-          txpower = report.txPower ?? 0;
-          rssi = report.ackRSSI ?? 0;
+          txPower = report.txPower ?? defaultMeshTxPower;
+          ackRSSI = report.ackRSSI ?? RssiError.NotAvailable;
         },
       });
     } catch (error) {
-      console.log("NACK");
-      await setTimeout(SecondsPerSample * 1000); // wait
+      console.error(`Node ${geolocNode.id}: NACK`);
+      await setTimeout(SecondsPerSample * 1000 / 4); // wait
       continue;
     }
 
-    // Extract the payload of the command if it was received
-    const payload = (await response)?.payload;
-    if (payload) {
-      // convert payload into .csv file coordinates
-      const lon = payload.readInt32BE(0) / (1 << 23); // convert the fixed point value to floating point - the decimal point is bit 23
-      const lat = payload.readInt32BE(4) / (1 << 23);
-      const alt = payload.readIntBE(8, 3) / 100; // reading is in centimeters but most tools want meters
-      const now = new Date();
-      const time = now.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      const stat = payload[11];
+    const payload = /** @type {CommandClass} */ (await geolocResponse)?.payload;
+    if (!payload) {
+      console.error(`Node ${geolocNode.id}: no response`);
+      await setTimeout(SecondsPerSample * 1000 / 4); // wait
+      continue;
+    }
 
-      if (0x07 == (stat & 0x07)) { // ignore the reading if the GPS coordinates are not valid
-        await fs.appendFile(
-          "geoloc.csv",
-          `${time}, ${lat}, ${lon}, ${alt}, ${txpower}, ${rssi}\n`,
-        ); // write coords to the csv file
+    // convert payload into .csv file coordinates
+    const lon = payload.readInt32BE(0) / (1 << 23); // convert the fixed point value to floating point - the decimal point is bit 23
+    const lat = payload.readInt32BE(4) / (1 << 23);
+    const alt = payload.readIntBE(8, 3) / 100; // reading is in centimeters but most tools want meters
+    const now = new Date();
+    const time = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    const stat = payload[11];
+    console.log("Lat=", lat, "Lon=", lon, "alt=", alt, "Sats=", stat>>4);
+
+    if ((stat & 0x07) !== 0x07) {
+      console.log(`Invalid GPS reading`);
+      await setTimeout(SecondsPerSample * 1000 / 4); // wait
+      continue;
+    }
+
+    // We got a GPS reading, write the info to the CSV file for this node
+    await fs.appendFile(
+      nodeIdToFileName(geolocNode.id),
+      `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}\n`,
+    );
+
+    await setTimeout(SecondsPerSample * 1000 / 4); // wait
+
+    // Now poll the rest of the nodes
+    for (const node of otherNodes) {
+      // Send a firmware update meta data get command to the node
+      const response = await node.commandClasses["Firmware Update Meta Data"]
+        .withTXReport()
+        .getMetaData()
+        .catch(() => null);
+
+      if (response) {
+        if (response.result) {
+          // We got an ACK and a response
+          const {txPower = defaultMeshTxPower, ackRSSI = RssiError.NotAvailable} = response.txReport ?? {};
+
+          // Determine the current time again
+          const now = new Date();
+          const time = now.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+          
+          // And write the info to the CSV file for this node
+          await fs.appendFile(
+            nodeIdToFileName(node.id),
+            `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}\n`,
+          );
+      
+        } else {
+          console.error(`Node ${node.id}: no response`);
+        }
+      } else {
+        console.error(`Node ${node.id}: NACK`);
       }
 
-      console.log("Lat=", lat, "Lon=", lon, "alt=", alt, "Sats=", stat>>4, "TxPower=",txpower);
-    }
+      // After each node, wait a bit for the network to settle
 
-    await setTimeout(SecondsPerSample * 1000 / 2); // wait
-/*
-    // send an indicator to blink three times for a visual indicator that the DUT is still in range
-    try {
-      await node.commandClasses.Indicator.set([
-        {
-          indicatorId: 0x50,
-          propertyId: 0x03,
-          value: 2,
-        },
-        {
-          indicatorId: 0x50,
-          propertyId: 0x04,
-          value: 3,
-        },
-      ]);
-    } catch (error) {
-      console.log("NACK");
-    }
+      await setTimeout(SecondsPerSample * 1000 / 4); // wait
+  /*
+      // send an indicator to blink three times for a visual indicator that the DUT is still in range
+      try {
+        await node.commandClasses.Indicator.set([
+          {
+            indicatorId: 0x50,
+            propertyId: 0x03,
+            value: 2,
+          },
+          {
+            indicatorId: 0x50,
+            propertyId: 0x04,
+            value: 3,
+          },
+        ]);
+      } catch (error) {
+        console.log("NACK");
+      }
 
-    // Wait before sending the next command
-    await setTimeout(SecondsPerSample * 1000 / 2);
-*/
+      // Wait before sending the next command
+      await setTimeout(SecondsPerSample * 1000 / 2);
+  */
+
+    }
   }
 }
 
