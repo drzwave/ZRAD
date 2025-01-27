@@ -87,7 +87,10 @@ async function main() {
 
   let txpower = 0;
   let rssi = 0;
-  const node = driver.controller.nodes.get(DUTNodeID);
+  // Get the node IDs of all connected nodes
+  const nodeIds = [...driver.controller.nodes.keys()]
+  // except the controller itself
+    .filter((id) => id !== driver.controller.ownNodeId);
 
   while (true) {
     // Create a custom command with raw payload
