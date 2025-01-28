@@ -25,6 +25,8 @@ const port = process.argv[2] ?? "COM5";
 
 const SecondsPerSample = 5; // UPDATE this with the desired time (in seconds) between samples - (1-100)
 
+const FileName = `geoloc.csv`
+
 // Replace the securityKeys below if desired...
 /////////////////////////////////////////////////////////////////////////////
 
@@ -142,12 +144,13 @@ async function main() {
   const start = new Date();
 
   // Create a CSV file for each end device
-  for (const node of [geolocNode, ...otherNodes]) {
+//  for (const node of [geolocNode, ...otherNodes]) {
     await fs.appendFile(
-      nodeIdToFileName(node.id),
-      `Time, Latitude, Longitude, Altitude, TxPower, RSSI, ${start}\n`,
+      FileName,
+//      nodeIdToFileName(node.id),
+      `Time, Latitude, Longitude, Altitude, TxPower, RSSI, NodeID, ${start}\n`,
     );
-  }
+//  }
 
   while (true) {
 
@@ -215,8 +218,9 @@ async function main() {
 
     // We got a GPS reading, write the info to the CSV file for this node
     await fs.appendFile(
-      nodeIdToFileName(geolocNode.id),
-      `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}\n`,
+      FileName,
+//      nodeIdToFileName(geolocNode.id),
+      `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}, ${geolocNode.id}\n`,
     );
 
     await setTimeout(SecondsPerSample * 1000 / 4); // wait
@@ -244,8 +248,9 @@ async function main() {
           
           // And write the info to the CSV file for this node
           await fs.appendFile(
-            nodeIdToFileName(node.id),
-            `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}\n`,
+            FileName,
+//            nodeIdToFileName(node.id),
+            `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}, ${node.id}\n`,
           );
       
         } else {

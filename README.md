@@ -271,6 +271,8 @@ Once the value has been determined, use the following command to program the val
 
 ```commander ctune set --value <ctunevalue> -d EFR32ZG23```
 
+```commander ctune get -d EFR32ZG23``` will return the three ctune values. The "Token" ctune is on-chip one in NVM which is erased if the User Data Page is erased. The DI value is programmed at the Silabs factory in the Data Information page for modules. The Board value is used for Silabs radio boards and thus not applicable for customer boards. 
+
 Note that railtest does NOT program the value in NVM. Railtest will only TEMPORARILY assign the CTUNE value. Commander must be used to program the value permanently.
 
 # Schematic to PCB process
