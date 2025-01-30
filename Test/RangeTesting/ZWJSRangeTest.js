@@ -143,7 +143,12 @@ async function main() {
 
   await setTimeout(5000);
 
-  const defaultMeshTxPower = (await driver.controller.getPowerlevel()).powerlevel;
+  let defaultMeshTxPower;
+  try {
+    defaultMeshTxPower = (await driver.controller.getPowerlevel()).powerlevel;
+  } catch {
+    defaultMeshTxPower = 0
+  }
   
   const start = new Date();
 
