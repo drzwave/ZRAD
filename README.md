@@ -9,7 +9,7 @@ ZRAD is not a product you can purchase, but anyone is welcome to manufacture and
 The objective is to accelerate Time-To-Market for Z-Wave products thru a simple to follow example with detailed step-by-step instructions.  
 See the [docs/ZRADTechDocs.docx](docs/ZRADTechDocs.docx) file for more details and the Theory of Operation.
 
-# Setup - Simplicity Studio SDSK 2024.12.0 (Z-Wave 7.23.0)
+# Setup - Simplicity Studio SSDK 2024.12.0 (Z-Wave 7.23.0)
 
 This setup guide assumes a ZRAD or ZRADmini board has been assembled and is ready for programming.
 ZRAD can be programmed as either a Controller or an End Device.
@@ -214,7 +214,7 @@ The QWIIC connector is normally only used when implementing ZRAD as an End Devic
 
 ## I2CSPM Setup
 
-While I2CSPM seems to work, since it is a polled peripheral it loads the CPU with a lot of polling loops which can make other parts of the system fail. Thus, this driver is not recommended but works fine for prototypes.
+While I2CSPM seems to work, since it is a polled peripheral which loads the CPU with polling loops which can make other parts of the system fail. Thus, this driver is not recommended but works fine for prototypes.
 
 1. Click on the .slcp file - select the Software Components tab - enter I2CSPM into the seach bar
 2. Click on Platform-\>Driver-\>I2C-\>I2CSPM and Install it

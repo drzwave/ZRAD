@@ -2,8 +2,11 @@
 
 // Z-Wave Geographic Location Command Class range test sample code
 // This javascript runs under Z-Wave JS and Node.js which will poll a DUT
-// every 10s for it's GeoLoc coordinates and write them to a file.
+// every X seconds for it's GeoLoc coordinates and write them to a file which 
+// then be imported into Excel which can then create Heat Maps.
+// This version also pings up to 3 other DUTs that are traveling with the GeoLoc DUT.
 //
+
 const { Driver, CommandClass } = require("zwave-js");
 const { CommandClasses, RFRegion, InterviewStage, RssiError } = require("@zwave-js/core");
 
@@ -28,6 +31,7 @@ const SecondsPerSample = 5; // UPDATE this with the desired time (in seconds) be
 const FileName = `geoloc.csv`
 
 // Replace the securityKeys below if desired...
+// Or use these in the PCC and check the Override button in the Security menu
 /////////////////////////////////////////////////////////////////////////////
 
 const driver = new Driver(port, {
