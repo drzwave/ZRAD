@@ -2,7 +2,7 @@
 
 Z-Wave USB Controller with best-in-class RF range Reference Application Design
 
-<img src="./docs/ZRAD2024.png" width="250" align="right" />
+<img src="./docs/ZRADMini.png" width="300" align="right" />
 
 The Z-Wave Alliance Z-Wave Reference Application Design (ZRAD) is a simple to copy, easy to modify, Open-Source _Reference_ design of a Z-Wave best-in-class RF range device. 
 ZRAD is not a product you can purchase, but anyone is welcome to manufacture and sell a product based on ZRAD. 
