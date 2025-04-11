@@ -42,13 +42,15 @@ Digits | Value | Description
 Optional data may be added after this for the UUID16 and other fields but these are not currently supported.
 '''
 
-# It is assumed the user is able to find and install these libraries which are pre-installed on the ZWP500.
+# Required Libraries
+import sys
 import qrcode   # QR Code generating code
 import PIL      # image processing operations
 from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageOps
+
 DEBUG = 1  # higher numbers print more debugging messages
 
 class SmartStartQR():
@@ -98,6 +100,10 @@ class SmartStartQR():
         imgPack.save("qrPack.png")                  # This is the image that goes on the outside of the box
 
 if __name__ == "__main__": # run the script standalone but typically the methods are called from a programming script
-    print("Building a sample QR Code")
     #q=SmartStartQR()
-    SmartStartQR.SS_QRGen()
+    if len(sys.argv) < 2:
+        print("Building a sample QR Code")
+        SmartStartQR.SS_QRGen()
+    else:
+        SmartStartQR.SS_QRGen(sys.argv[1])
+    print("QR codes generated - see qrPack.png * qrProd.png")

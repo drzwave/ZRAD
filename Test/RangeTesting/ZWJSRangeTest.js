@@ -66,7 +66,8 @@ const driver = new Driver(port, {
   },
   rf: {
     // Set the RF region to EU_LR on startup
-    region: RFRegion["Europe (Long Range)"],
+    //region: RFRegion["Europe (Long Range)"],
+    region: RFRegion["USA (Long Range)"],
     // Configure TX Power and LR Powerlevel if desired
     txPower: {
       powerlevel: 13,
@@ -157,10 +158,18 @@ async function main() {
     await fs.appendFile(
       FileName,
 //      nodeIdToFileName(node.id),
-      `Time, Latitude, Longitude, Altitude, TxPower, RSSI, NodeID, ${start}\n`,
+      `Time, Latitude, Longitude, Altitude, TxPower, RSSI, NodeID, Distance, ${start}\n`,
     );
 //  }
 
+  let txPower = 0;
+  let ackRSSI = 0;
+  let StartLat = 0;
+  let StartLong= 0;
+  let Distance = 0;
+  let FirstLat = 0;
+  let FirstLon = 0;
+  
   while (true) {
 
     // Try to get the geographic location from the Geoloc node
@@ -180,9 +189,6 @@ async function main() {
       )
       .catch(() => null);
 
-    let txPower = 0;
-    let ackRSSI = 0;
-      
     try { // ignore errors on a NACK
       // Send the command
       await driver.sendCommand(geolocGet, {
@@ -217,9 +223,17 @@ async function main() {
       second: "2-digit",
     });
     const stat = payload[11];
-    console.log("Lat=", lat, "Lon=", lon, "alt=", alt, "Sats=", stat>>4);
+    if (0==FirstLat) {  // compute the distance between the first point and the current point in meters
+        FirstLat = lat;
+        FirstLon = lon;
+    } else {
+        const X = lat-FirstLat;
+        const Y = lon-FirstLon;
+        Distance = Math.sqrt(X*X + Y*Y)*111.2*1000; // 111.2km per degree assuming short distances where curvature of earth doesn't matter
+    }
+    console.log("Lat=", lat, "Lon=", lon, "alt=", alt, "Sats=", stat>>4, "Distance=", Distance);
 
-    if ((stat & 0x07) !== 0x07) {
+    if ((stat>>4) < 4) { // 4 or more satellites are required for a valid GPS reading
       console.log(`Invalid GPS reading`);
       await setTimeout(SecondsPerSample * 1000 / 4); // wait
       continue;
@@ -229,7 +243,7 @@ async function main() {
     await fs.appendFile(
       FileName,
 //      nodeIdToFileName(geolocNode.id),
-      `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}, ${geolocNode.id}\n`,
+      `${time}, ${lat}, ${lon}, ${alt}, ${txPower}, ${ackRSSI}, ${geolocNode.id}, ${Distance}\n`,
     );
 
     await setTimeout(SecondsPerSample * 1000 / 4); // wait
