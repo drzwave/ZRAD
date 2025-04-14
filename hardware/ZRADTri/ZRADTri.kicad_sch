@@ -4054,7 +4054,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Package_DFN_QFN:QFN-40-1EP_5x5mm_P0.4mm_EP3.6x3.6mm"
 				(at 2.54 -34.29 0)
 				(effects
 					(font
@@ -4072,7 +4072,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "ARM M33 SubGHz Radio +20dBm 1MB Flash 288KRAM Z-Wave QFN-40"
+			(property "Description" "ARM,M33,SubGHz Radio,+20dBm,1MB,Flash,288KRAM,Z-Wave,QFN-40"
 				(at 1.016 3.81 0)
 				(effects
 					(font
@@ -6782,7 +6782,7 @@
 		(uuid "0423e2fb-5427-498b-a43a-de94bab674a5")
 	)
 	(no_connect
-		(at 148.59 121.92)
+		(at 148.59 109.22)
 		(uuid "0a93df3b-505e-46a1-8a8a-ea0cdafc5177")
 	)
 	(no_connect
@@ -8685,16 +8685,6 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 109.22) (xy 148.59 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb21f5ea-9eea-4db5-8f3d-51c96363ec1d")
-	)
-	(wire
-		(pts
 			(xy 194.31 116.84) (xy 213.36 116.84)
 		)
 		(stroke
@@ -9195,6 +9185,16 @@
 	)
 	(wire
 		(pts
+			(xy 129.54 121.92) (xy 148.59 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea5a2550-630c-4315-84f0-bcd3a44ce672")
+	)
+	(wire
+		(pts
 			(xy 247.65 110.49) (xy 248.92 110.49)
 		)
 		(stroke
@@ -9433,8 +9433,8 @@
 		)
 		(uuid "040e0b46-6d38-4f45-8dcf-5b558672830d")
 	)
-	(label "GP00"
-		(at 135.89 109.22 0)
+	(label "GP06"
+		(at 138.43 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9723,7 +9723,7 @@
 		)
 		(uuid "be5dbf8b-6746-4269-a72b-129010e22ddb")
 	)
-	(label "GP00"
+	(label "GP06"
 		(at 36.83 115.57 0)
 		(effects
 			(font
@@ -11176,7 +11176,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:TQFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias"
 			(at 173.99 156.21 0)
 			(effects
 				(font
@@ -11194,7 +11194,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "ARM M33 SubGHz Radio +20dBm 1MB Flash 288KRAM Z-Wave QFN-40"
+		(property "Description" "ARM,M33,SubGHz Radio,+20dBm,1MB,Flash,288KRAM,Z-Wave,QFN-40"
 			(at 172.466 118.11 0)
 			(effects
 				(font
@@ -17898,7 +17898,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 133.35 95.25 0)
 			(effects
 				(font
