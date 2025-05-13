@@ -6,7 +6,7 @@
 	(paper "A")
 	(title_block
 		(title "ZRAD Mini Z-Wave Reference Application Design CZ20")
-		(date "2025-04-11")
+		(date "2025-05-13")
 		(rev "A1")
 		(company "Trident IoT")
 		(comment 1 "Trident CZ20 and Ignion chip antenna")
@@ -6516,7 +6516,7 @@
 		)
 		(uuid "96ef4bc0-cf0a-41b3-8e85-3684813af34c")
 	)
-	(text "PCB ANTENNA TUNING:\nUS: C4=TBD, C3=TBD, C4=TBD\nEU: C4=TBD, C3=TBD, C4=TBD"
+	(text "PCB ANTENNA TUNING:\nUS: C1=TBD, C2=TBD, C3=TBD\nEU: C1=TBD, C2=TBD, C3=TBD"
 		(exclude_from_sim no)
 		(at 198.882 83.058 0)
 		(effects
@@ -10202,7 +10202,7 @@
 				)
 			)
 		)
-		(property "Value" "39MHz 10ppm"
+		(property "Value" "32MHz 7ppm"
 			(at 204.216 146.05 90)
 			(effects
 				(font
@@ -11512,7 +11512,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100PF"
+		(property "Value" "120PF"
 			(at 243.205 88.265 0)
 			(effects
 				(font
@@ -11573,15 +11573,15 @@
 		(dnp no)
 		(uuid "31cb7bf7-d080-484e-9698-1473782c0579")
 		(property "Reference" "L8"
-			(at 142.24 92.71 90)
+			(at 139.954 98.298 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "4U7"
-			(at 142.24 97.155 90)
+		(property "Value" "4.7UH"
+			(at 142.24 95.758 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12792,7 +12792,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100NF"
+		(property "Value" "100N"
 			(at 183.515 85.09 0)
 			(effects
 				(font
@@ -13663,7 +13663,7 @@
 				)
 			)
 		)
-		(property "Value" "47UH"
+		(property "Value" "47NH"
 			(at 236.855 82.55 90)
 			(effects
 				(font
@@ -14601,7 +14601,7 @@
 				)
 			)
 		)
-		(property "Value" "27UH"
+		(property "Value" "27NH"
 			(at 220.98 97.536 90)
 			(effects
 				(font
@@ -16357,7 +16357,7 @@
 				)
 			)
 		)
-		(property "Value" "8N5"
+		(property "Value" "8.5NH"
 			(at 228.346 111.506 90)
 			(effects
 				(font
@@ -16645,7 +16645,7 @@
 				)
 			)
 		)
-		(property "Value" "47UH"
+		(property "Value" "47NH"
 			(at 209.55 100.33 90)
 			(effects
 				(font
@@ -16842,7 +16842,7 @@
 				)
 			)
 		)
-		(property "Value" "27UH"
+		(property "Value" "27NH"
 			(at 209.55 104.14 90)
 			(effects
 				(font
@@ -16989,8 +16989,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10UF"
-			(at 147.066 84.582 0)
+		(property "Value" "4U7"
+			(at 148.336 84.582 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17830,7 +17830,7 @@
 				)
 			)
 		)
-		(property "Value" "12N"
+		(property "Value" "12NH"
 			(at 236.22 111.76 90)
 			(effects
 				(font
@@ -18245,7 +18245,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 133.35 95.25 0)
 			(effects
 				(font
