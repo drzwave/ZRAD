@@ -6,10 +6,10 @@
 	(paper "A")
 	(title_block
 		(title "ZRAD Mini Z-Wave Reference Application Design CZ20")
-		(date "2025-05-13")
-		(rev "A1")
+		(date "2025-06-30")
+		(rev "B")
 		(company "Trident IoT")
-		(comment 1 "Trident CZ20 and Ignion chip antenna")
+		(comment 1 "Trident CZ20 Z-Wave MCU")
 	)
 	(lib_symbols
 		(symbol "Conn_Coaxial_1"
@@ -2303,7 +2303,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:LED_GRAB"
+		(symbol "Device:LED_ARGB"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -2319,7 +2319,7 @@
 					)
 				)
 			)
-			(property "Value" "LED_GRAB"
+			(property "Value" "LED_ARGB"
 				(at 0 -8.89 0)
 				(effects
 					(font
@@ -2345,7 +2345,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "RGB LED, green/red/anode/blue"
+			(property "Description" "RGB LED, anode/red/green/blue"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2372,7 +2372,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "LED_GRAB_0_0"
+			(symbol "LED_ARGB_0_0"
 				(text "R"
 					(at -1.905 3.81 0)
 					(effects
@@ -2398,7 +2398,7 @@
 					)
 				)
 			)
-			(symbol "LED_GRAB_0_1"
+			(symbol "LED_ARGB_0_1"
 				(polyline
 					(pts
 						(xy -1.27 6.35) (xy -1.27 3.81)
@@ -2730,7 +2730,7 @@
 					)
 				)
 			)
-			(symbol "LED_GRAB_1_1"
+			(symbol "LED_ARGB_1_1"
 				(pin passive line
 					(at -5.08 5.08 0)
 					(length 2.54)
@@ -2759,7 +2759,7 @@
 							)
 						)
 					)
-					(number "1"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2795,7 +2795,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4054,7 +4054,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_DFN_QFN:QFN-40-1EP_5x5mm_P0.4mm_EP3.6x3.6mm"
+			(property "Footprint" "Package_DFN_QFN:VQFN-40-1EP_5x5mm_P0.4mm_EP3.3x3.3mm"
 				(at 2.54 -34.29 0)
 				(effects
 					(font
@@ -4081,7 +4081,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "Trident IoT Z-Wave ARM MCU CM33 Radio 900MHz SoC CPU "
+			(property "ki_keywords" "Trident IoT Z-Wave ARM MCU CM33 Radio 900MHz SoC CPU"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4090,7 +4090,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*QFN*5x5mm*P0.4mm*EP3.*"
+			(property "ki_fp_filters" "*QFN*5x5mm*P0.4mm*EP3.3*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6516,7 +6516,17 @@
 		)
 		(uuid "96ef4bc0-cf0a-41b3-8e85-3684813af34c")
 	)
-	(text "PCB ANTENNA TUNING:\nUS: C1=TBD, C2=TBD, C3=TBD\nEU: C1=TBD, C2=TBD, C3=TBD"
+	(text "Hardware\nVersion"
+		(exclude_from_sim no)
+		(at 239.776 127 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9aa65857-22b3-4bd7-84eb-d975b11401c6")
+	)
+	(text "PCB ANTENNA TUNING:\nUS: C1=TBD, C2=TBD, C3=TBD\nEU: C1=TBD, C2=TBD, C3=TBD\nSMA Antenna: C1,C2,C3 NM"
 		(exclude_from_sim no)
 		(at 198.882 83.058 0)
 		(effects
@@ -6555,6 +6565,12 @@
 		(uuid "008cded3-4d98-4476-b25d-f4d9b2218926")
 	)
 	(junction
+		(at 226.06 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "058d916d-365b-49ab-9afc-b4fd3b121a9d")
+	)
+	(junction
 		(at 254 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6577,6 +6593,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "20b90d07-696d-4be7-98a1-5a652d368098")
+	)
+	(junction
+		(at 207.01 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "23607abc-2b2a-4ec6-a857-fabfc79ce1ed")
 	)
 	(junction
 		(at 152.4 77.47)
@@ -6661,12 +6683,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3edd3da7-8929-4b83-88b5-ac7dcf593f33")
-	)
-	(junction
-		(at 215.9 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "528c3209-a824-4c19-ac0a-0bddd4f868e1")
 	)
 	(junction
 		(at 55.88 55.88)
@@ -7008,16 +7024,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 171.45) (xy 50.8 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05e42622-2435-45a1-aa04-eb4d24109d27")
-	)
-	(wire
-		(pts
 			(xy 63.5 53.34) (xy 63.5 60.96)
 		)
 		(stroke
@@ -7085,6 +7091,16 @@
 			(type default)
 		)
 		(uuid "0b0f05d2-725c-4ced-afc0-32602160834f")
+	)
+	(wire
+		(pts
+			(xy 226.06 127) (xy 226.06 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ea4f18c-87cc-4eed-923e-aafecf2c7d16")
 	)
 	(wire
 		(pts
@@ -7398,16 +7414,6 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 99.06) (xy 219.71 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2cb099f4-7676-401a-8993-3741ed7d84db")
-	)
-	(wire
-		(pts
 			(xy 107.95 144.78) (xy 99.06 144.78)
 		)
 		(stroke
@@ -7658,6 +7664,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 114.3) (xy 220.98 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "497cdf20-5301-4c5a-aefd-2484ea64768a")
+	)
+	(wire
+		(pts
 			(xy 194.31 129.54) (xy 213.36 129.54)
 		)
 		(stroke
@@ -7725,6 +7741,16 @@
 			(type default)
 		)
 		(uuid "4e66bc57-2b85-43df-8b9f-e3445e3c125e")
+	)
+	(wire
+		(pts
+			(xy 219.71 96.52) (xy 207.01 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fb0be4a-fe0b-402b-bf25-11c323223c77")
 	)
 	(wire
 		(pts
@@ -8118,6 +8144,16 @@
 	)
 	(wire
 		(pts
+			(xy 219.71 99.06) (xy 219.71 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "794b26af-8319-4b7f-a36c-ea5fe5d73f43")
+	)
+	(wire
+		(pts
 			(xy 86.36 88.9) (xy 86.36 90.17)
 		)
 		(stroke
@@ -8148,7 +8184,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 171.45) (xy 69.85 171.45)
+			(xy 58.42 181.61) (xy 69.85 181.61)
 		)
 		(stroke
 			(width 0)
@@ -8598,6 +8634,16 @@
 	)
 	(wire
 		(pts
+			(xy 45.72 171.45) (xy 50.8 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7cb22bb-c63c-4168-bfcb-0b1331f13f07")
+	)
+	(wire
+		(pts
 			(xy 53.34 58.42) (xy 55.88 58.42)
 		)
 		(stroke
@@ -8638,7 +8684,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 181.61) (xy 69.85 181.61)
+			(xy 58.42 171.45) (xy 69.85 171.45)
 		)
 		(stroke
 			(width 0)
@@ -8848,7 +8894,7 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 114.3) (xy 213.36 114.3)
+			(xy 194.31 114.3) (xy 220.98 114.3)
 		)
 		(stroke
 			(width 0)
@@ -9038,16 +9084,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 181.61) (xy 50.8 181.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d7d0dc92-3d48-4116-a6af-c7162dbc51f9")
-	)
-	(wire
-		(pts
 			(xy 238.76 110.49) (xy 240.03 110.49)
 		)
 		(stroke
@@ -9105,6 +9141,16 @@
 			(type default)
 		)
 		(uuid "db568eb1-6dfd-4542-8d5e-1d36bcb63584")
+	)
+	(wire
+		(pts
+			(xy 45.72 181.61) (xy 50.8 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbb26475-d7a9-48bc-9b2d-8e22e59cedfe")
 	)
 	(wire
 		(pts
@@ -9298,6 +9344,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 127) (xy 226.06 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eaf27aa4-976a-4838-acff-99f147dbf5cb")
+	)
+	(wire
+		(pts
 			(xy 106.68 187.96) (xy 106.68 190.5)
 		)
 		(stroke
@@ -9335,6 +9391,16 @@
 			(type default)
 		)
 		(uuid "ee50c7c9-301b-4721-aa2f-063360031c1d")
+	)
+	(wire
+		(pts
+			(xy 226.06 127) (xy 226.06 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f06d608e-012a-48b9-a868-d5cef2d8af09")
 	)
 	(wire
 		(pts
@@ -9637,7 +9703,7 @@
 		(uuid "377b0132-6ea7-4f05-bf8b-a23723fa7b71")
 	)
 	(label "LED_BLUE"
-		(at 60.96 181.61 0)
+		(at 60.96 171.45 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9737,7 +9803,7 @@
 		(uuid "92ad8260-5c1a-44f6-a9f5-5122dd35a1e4")
 	)
 	(label "LED_RED"
-		(at 60.96 171.45 0)
+		(at 60.96 181.61 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11269,7 +11335,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:TQFN-40-1EP_5x5mm_P0.4mm_EP3.5x3.5mm_ThermalVias"
+		(property "Footprint" "Package_DFN_QFN:VQFN-40-1EP_5x5mm_P0.4mm_EP3.3x3.3mm"
 			(at 173.99 156.21 0)
 			(effects
 				(font
@@ -11632,7 +11698,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 54.61 171.45 90)
+		(at 54.61 181.61 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11640,7 +11706,7 @@
 		(dnp no)
 		(uuid "33171f66-3d2e-4ffb-94ab-8b8a54514b8a")
 		(property "Reference" "R2"
-			(at 51.435 170.18 90)
+			(at 51.435 180.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11648,7 +11714,7 @@
 			)
 		)
 		(property "Value" "1K2"
-			(at 58.42 170.18 90)
+			(at 58.42 180.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11656,7 +11722,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 54.864 170.434 90)
+			(at 54.864 180.594 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11665,7 +11731,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 54.61 171.45 0)
+			(at 54.61 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11674,7 +11740,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 54.61 171.45 0)
+			(at 54.61 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12245,7 +12311,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 54.61 181.61 90)
+		(at 54.61 171.45 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12253,7 +12319,7 @@
 		(dnp no)
 		(uuid "42a06e9b-e4ca-4e0e-a56d-86fa78051fc1")
 		(property "Reference" "R3"
-			(at 51.435 180.34 90)
+			(at 51.435 170.18 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12261,7 +12327,7 @@
 			)
 		)
 		(property "Value" "820"
-			(at 58.42 180.34 90)
+			(at 58.42 170.18 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12269,7 +12335,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 54.864 180.594 90)
+			(at 54.864 170.434 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12278,7 +12344,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 54.61 181.61 0)
+			(at 54.61 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12287,7 +12353,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 54.61 181.61 0)
+			(at 54.61 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13042,7 +13108,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED_GRAB")
+		(lib_id "Device:LED_ARGB")
 		(at 40.64 176.53 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13059,7 +13125,7 @@
 				)
 			)
 		)
-		(property "Value" "QLSP14RGB_B"
+		(property "Value" "BL-HJXGXBX32M-D"
 			(at 40.64 166.37 0)
 			(effects
 				(font
@@ -13067,7 +13133,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ZReach:LED_QLSP14RGB"
+		(property "Footprint" "LED_SMD:LED_Cree-PLCC4_3.2x2.8mm_CCW"
 			(at 40.64 175.26 0)
 			(effects
 				(font
@@ -13076,7 +13142,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.americanbrightled.com/pdffiles/led-components/plcc/BL-HJXGXBX32M-D.pdf"
 			(at 40.64 175.26 0)
 			(effects
 				(font
@@ -13085,7 +13151,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RGB LED, green/red/anode/blue"
+		(property "Description" "RGB LED, anode/red/green/blue"
 			(at 40.64 176.53 0)
 			(effects
 				(font
@@ -14602,7 +14668,7 @@
 			)
 		)
 		(property "Value" "27NH"
-			(at 220.98 97.536 90)
+			(at 222.504 100.076 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14713,6 +14779,73 @@
 			(project "ZRADTri"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "#e0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 229.87 129.54 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8b8436e2-2d07-4611-abb6-05f4c4e2988d")
+		(property "Reference" "R12"
+			(at 229.616 131.826 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NM"
+			(at 233.68 128.27 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 230.124 128.524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.87 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.87 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ef5a99e3-2c40-4cf7-a86d-9ac81b19eca5")
+		)
+		(pin "2"
+			(uuid "8498feb0-5450-4cb9-95f8-2ac482d4bc0f")
+		)
+		(instances
+			(project "ZRADTri"
+				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -16492,6 +16625,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_US")
+		(at 229.87 125.73 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce8edff3-4987-43b6-962f-ca9cd02329db")
+		(property "Reference" "R11"
+			(at 226.695 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1M"
+			(at 230.378 123.952 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 230.124 124.714 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.87 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.87 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "93cdb7c9-a7f7-431e-b8a7-56d177824c4c")
+		)
+		(pin "2"
+			(uuid "bd2b1b2a-d260-4d4a-8670-fc28e8b11452")
+		)
+		(instances
+			(project "ZRADTri"
+				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 204.47 96.52 270)
 		(unit 1)
@@ -17244,6 +17444,71 @@
 			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 233.68 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e1e3bd41-745a-4455-bf71-30e9263f9411")
+		(property "Reference" "#PWR04"
+			(at 233.68 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 233.68 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 233.68 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc5ad32c-6e27-47af-8b70-90c427860a80")
+		)
+		(instances
+			(project "ZRADTri"
+				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -18213,6 +18478,71 @@
 			(project "ZRAD"
 				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
 					(reference "L9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 233.68 125.73 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f4389d18-ae09-4711-9b56-f2d573e30481")
+		(property "Reference" "#PWR05"
+			(at 233.68 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 233.934 122.428 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 233.68 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "800f1c7e-9e63-4991-ad3f-85d36fd7e1f5")
+		)
+		(instances
+			(project "ZRADTri"
+				(path "/ba492aef-b6eb-4439-8867-b040ec48a543"
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)

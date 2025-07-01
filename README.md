@@ -293,8 +293,8 @@ KiCAD is used for the schematic and PCB design. The hardware/ZRAD directory cont
     - All the selected layers will be saved in the chosen folder
 12. File-\>Fabrication Outputs-\>Component Placement - click on Generate Position File
 13. Delete the ZRAD-bottom.pos file as there are no bottom side components
-14. There should be a total of 12 files - add these to a compressed ZIP file and name it ZRAD.zip
-15. Delete the 12 gerber files and just keep the ZIP file
+14. There should be a total of 10 files (12 for a 4 layer board) - add these to a compressed ZIP file and name it ZRAD.zip
+15. Delete the gerber files and just keep the ZIP file
 16. Review the gerbers using one of the many gerber viewer programs 
     - Check that there is solder mask between the pins of the ZG23 and CP2102
     - if not, check the Board Setup-\>Board Stackup-\>Solder Make/Paste-\>Solder mask expansion is set to 0.0508mm (not zero)
@@ -304,7 +304,8 @@ KiCAD is used for the schematic and PCB design. The hardware/ZRAD directory cont
     - Select layers F.Silkscreen, F.Mask, User.Comments, Edge.Cuts and print in black and white
 19. Order PCBS!
     - OSHPark.com is recommended - Use the gerbers and NOT the KiCAD files as the gerbers will give you exactly what is plotted, the PCB house may use other defaults for various clearances which might cause problems
-    - May 2024 cost $233 for 3 boards
+    - May 2024 cost $233 for 3 4-layer ZRAD boards
+    - July 2025 cost $24.75 for 3 2-layer ZRADTri boards
 20. Order a Stencil using the ZRAD-F_Paste.gtp file
 
 Order components from the BOM for the needed quantity. Once everything arrives, use the stencil to swipe a layer of solder paste onto the PCBs, place the components by hand, then bake in an IR oven, clean up any solder issues. PCBs are now ready to test!

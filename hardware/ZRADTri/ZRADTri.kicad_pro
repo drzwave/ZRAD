@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 2.7,
-          "height": 2.7,
-          "width": 2.7
+          "drill": 0.254,
+          "height": 0.5,
+          "width": 0.5
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.25
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -59,18 +59,6 @@
         }
       ],
       "drc_exclusions": [
-        [
-          "extra_footprint|142200000|69000000|ed2d1dd1-3681-44fd-b44a-5f084083363f|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|173600000|139400000|f7e3c8d8-0a2d-4abc-91b3-040a44e04fa6|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|160000000|98500000|721d4b00-21ee-4456-ae73-f9f9ddce7095|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
         [
           "lib_footprint_mismatch|161130000|87000000|2b5ba477-cd62-48e3-8c26-380e310330e6|00000000-0000-0000-0000-000000000000",
           ""
@@ -682,7 +670,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "./",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,

@@ -10,7 +10,7 @@ The script to generate most of the data is the ZWJSRangeTest.js file which requi
 3. Use Z-Wave JS UI to add/remove nodes using QR codes and/or reset the controller
     - Or use the PC Controller from Silabs 
         - note! copy the Keys from ZWJSRangeTest.js into the PCC Security tab 
-4. ```npm zwave-js``` will install zwave-js into this directory
+4. ```npm install zwave-js``` will install zwave-js into this directory
 5. ```node ZWJSRangeTest.js [COMx]``` starts Z-Wave JS with many messages scrolling quickly
     - The nodes are interviewed each time the script is run
     - If something fails, try rerunning the script and the interview should complete ok
@@ -85,11 +85,15 @@ There are also plenty of YouTube videos on the topic.
     - Which requires modification to match your setup
     - Replace the NodeID and the matching device name to the number and strings in the formula
 15. Drag the formula down for the entire column
+    - Use ```<CTL>Down Arrow``` to go to the last entry in a column
 16. Fill the 2nd column with Zeroes (0) and make row 1 be "Zero"
     - This field is a workaround to make the height zero otherwise the map is too complex to visualize
+16. SAVE THE FILE OUT, make a copy to add the 3D maps graphics
+    - Once the .XLSX has a 3D map in it, it seems to forever be screwed up and you must start from scratch
 17. Select the Clustered Column map at the top of the Data menu (2nd icon from the left)
 17. Select the HEIGHT to be the Zero Column
 18. Select the Node Column in the Category
+19. Then change the Thickness to be 4% to make the square small enough to not overlap
 19. You should get a map similar to the one shown here
     - The ZRM Geo is the ZRADMini node with GeoLocCCv2 in it (purple) which has the best range
 20. **Other Options**
