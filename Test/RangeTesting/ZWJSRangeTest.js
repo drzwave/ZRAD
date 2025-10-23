@@ -35,10 +35,10 @@ const FileName = `geoloc.csv`
 /////////////////////////////////////////////////////////////////////////////
 
 const driver = new Driver(port, {
-  // logConfig: {
-  // 	logToFile: true,
-  // 	forceConsole: true,
-  // },
+    logConfig: {        // uncomment these 4 lines if there are problems with the serialAPI
+   	logToFile: true,    // they will create a log file in the current folder
+  	forceConsole: true,
+   },
   securityKeys: {
     S0_Legacy: Buffer.from("00000000000000000000000000000001", "hex"),
     S2_Unauthenticated: Buffer.from(
@@ -68,9 +68,9 @@ const driver = new Driver(port, {
     // Set the RF region to EU_LR on startup
     //region: RFRegion["Europe (Long Range)"],
     region: RFRegion["USA (Long Range)"],
-    // Configure TX Power and LR Powerlevel if desired
+    // Configure TX Power and LR Powerlevel if desired - 0 for US, 13 for EU
     txPower: {
-      powerlevel: 13,
+      powerlevel: 0,
       measured0dBm: 0,
     },
     maxLongRangePowerlevel: 20,
