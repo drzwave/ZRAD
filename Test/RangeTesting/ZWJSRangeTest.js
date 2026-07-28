@@ -26,7 +26,7 @@ process.on("unhandledRejection", (r) => {
 const port = process.argv[2] ?? "COM5";
 // Then update the keys as needed - extract them from Z-Wave JS UI.
 
-const SecondsPerSample = 5; // UPDATE this with the desired time (in seconds) between samples - (1-100)
+const SecondsPerSample = 10; // UPDATE this with the desired time (in seconds) between samples - (1-100)
 
 const FileName = `geoloc.csv`
 
@@ -66,8 +66,8 @@ const driver = new Driver(port, {
   },
   rf: {
     // Set the RF region to EU_LR on startup
-    //region: RFRegion["Europe (Long Range)"],
-    region: RFRegion["USA (Long Range)"],
+    region: RFRegion["Europe (Long Range)"],
+    //region: RFRegion["USA (Long Range)"],
     // Configure TX Power and LR Powerlevel if desired - 0 for US, 13 for EU
     txPower: {
       powerlevel: 0,

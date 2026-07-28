@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 2.7,
-          "height": 2.7,
-          "width": 2.7
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -60,35 +60,7 @@
       ],
       "drc_exclusions": [
         [
-          "extra_footprint|142200000|68800000|c8d80f28-7986-4331-ae4a-b2a2ffdf35d6|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|148000000|131000000|a6f88350-3a66-480b-8996-2d4d54e81348|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|148000000|71000000|17b9aa87-780f-44d6-a028-e5d06ea7b4df|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|166800000|146800000|06e306b0-e81a-4bbb-b361-cf116f930c2c|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|168000000|131000000|0a4ec81f-380e-4d8b-98b4-ebd607e7e3b4|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "extra_footprint|168000000|71000000|ba8dead1-3607-418b-adab-79470149d935|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
           "lib_footprint_mismatch|161330000|86800000|2b5ba477-cd62-48e3-8c26-380e310330e6|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|166000000|104000000|0ab71dd8-6bd4-4541-9cc5-ebb052ceee9d|00000000-0000-0000-0000-000000000000",
           ""
         ]
       ],
@@ -475,10 +447,15 @@
       "duplicate_sheet_names": "error",
       "endpoint_off_grid": "warning",
       "extra_units": "error",
+      "footprint_filter": "ignore",
+      "footprint_link_issues": "warning",
+      "four_way_junction": "ignore",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
       "label_dangling": "error",
+      "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
+      "lib_symbol_mismatch": "warning",
       "missing_bidi_pin": "warning",
       "missing_input_pin": "warning",
       "missing_power_pin": "error",
@@ -491,9 +468,15 @@
       "pin_not_driven": "error",
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
+      "same_local_global_label": "warning",
+      "similar_label_and_power": "warning",
       "similar_labels": "warning",
+      "similar_power": "warning",
       "simulation_model_issue": "ignore",
+      "single_global_label": "ignore",
       "unannotated": "error",
+      "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -629,6 +612,7 @@
       ],
       "filter_string": "",
       "group_symbols": true,
+      "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
@@ -672,6 +656,7 @@
     },
     "page_layout_descr_file": "",
     "plot_directory": "",
+    "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
